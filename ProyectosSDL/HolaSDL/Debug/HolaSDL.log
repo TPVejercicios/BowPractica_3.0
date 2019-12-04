@@ -1,0 +1,10 @@
+﻿  ArrowGameObject.cpp
+  SDLApplication.cpp
+  main.cpp
+  Texture.cpp
+  Vector2D.cpp
+U:\hlocal\Bow3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552:  '*': result of expression not used
+U:\hlocal\Bow3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552:  '*': result of expression not used
+  Generating Code...
+U:\hlocal\Bow3.0\ProyectosSDL\HolaSDL\Vector2D.cpp(6,10): warning C4244:  'initializing': conversion from 'double' to 'int', possible loss of data
+  HolaSDL.vcxproj -> U:\hlocal\Bow3.0\ProyectosSDL\bin\HolaSDLDebug.exe
