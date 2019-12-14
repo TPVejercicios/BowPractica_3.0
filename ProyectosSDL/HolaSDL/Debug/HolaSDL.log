@@ -1,10 +1,26 @@
-﻿  MenuButton.cpp
-G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552: "*": el resultado de la expresión no se usa
-G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552: "*": el resultado de la expresión no se usa
+﻿  ArrowGameObject.cpp
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552:  "*": el resultado de la expresión no se usa
+  EndState.cpp
+  SDLApplication.cpp
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552:  "*": el resultado de la expresión no se usa
+  GameObject.cpp
+  GameState.cpp
+  GameStateMachine.cpp
+  main.cpp
+  MainMenuState.cpp
+  MenuButton.cpp
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\SDLApplication.cpp(17,13): warning C4244:  'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552:  "*": el resultado de la expresión no se usa
   PauseState.cpp
+  PlayState.cpp
+  SDLGameObject.cpp
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552:  "*": el resultado de la expresión no se usa
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552:  "*": el resultado de la expresión no se usa
+  Texture.cpp
   Vector2D.cpp
-G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552: "*": el resultado de la expresión no se usa
-G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552: "*": el resultado de la expresión no se usa
-G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.cpp(6,10): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552:  "*": el resultado de la expresión no se usa
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552:  "*": el resultado de la expresión no se usa
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552:  "*": el resultado de la expresión no se usa
   Generando código...
-  HolaSDL.vcxproj -> G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\bin\HolaSDLDebug.exe
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.cpp(6,10): warning C4244:  'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  HolaSDL.vcxproj -> C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\bin\HolaSDLDebug.exe
