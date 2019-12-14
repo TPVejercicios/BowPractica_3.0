@@ -1,26 +1,43 @@
-﻿  ArrowGameObject.cpp
-C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552:  "*": el resultado de la expresión no se usa
-  EndState.cpp
+﻿  EndState.cpp
   SDLApplication.cpp
-C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552:  "*": el resultado de la expresión no se usa
-  GameObject.cpp
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.h(32,49): error C2061:  error de sintaxis: identificador 'Texture'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.h(17,1): error C2011:  'indexTexturas': nueva definición del tipo 'enum'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\SDLApplication.h(35): message :  vea la declaración de 'indexTexturas'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(15,36): error C2664:  'GameState::GameState(const GameState &)': el argumento 1 no puede convertirse de 'GameStateMachine *' a 'const GameState &'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(15,36): message :  Razón: no se puede realizar la conversión de 'GameStateMachine *' a 'const GameState'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(15,36): message :  Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PauseState.h(10,37): error C2664:  'GameState::GameState(const GameState &)': el argumento 1 no puede convertirse de 'GameStateMachine *' a 'const GameState &'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PauseState.h(10,37): message :  Razón: no se puede realizar la conversión de 'GameStateMachine *' a 'const GameState'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PauseState.h(10,37): message :  Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\EndState.h(9,35): error C2664:  'GameState::GameState(const GameState &)': el argumento 1 no puede convertirse de 'GameStateMachine *' a 'const GameState &'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\EndState.h(9,35): message :  Razón: no se puede realizar la conversión de 'GameStateMachine *' a 'const GameState'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\EndState.h(9,35): message :  Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
   GameState.cpp
-  GameStateMachine.cpp
-  main.cpp
-  MainMenuState.cpp
-  MenuButton.cpp
 C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\SDLApplication.cpp(17,13): warning C4244:  'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552:  "*": el resultado de la expresión no se usa
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.h(32,49): error C2061:  error de sintaxis: identificador 'Texture'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\SDLApplication.h(36,1): error C2011:  'indexTexturas': nueva definición del tipo 'enum'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.h(16): message :  vea la declaración de 'indexTexturas'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.cpp(8,60): error C2511:  'GameState::GameState(GameStateMachine *,Texture *)': la función miembro sobrecargada no se ha encontrado en 'GameState'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameStateMachine.h(4): message :  vea la declaración de 'GameState'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.cpp(9,12): error C2597:  referencia no válida a miembro no static 'GameState::gsm'
+  GameStateMachine.cpp
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.cpp(10,44): error C2597:  referencia no válida a miembro no static 'GameState::background'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.h(17,1): error C2011:  'indexTexturas': nueva definición del tipo 'enum'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\SDLApplication.h(35): message :  vea la declaración de 'indexTexturas'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PauseState.h(10,37): error C2664:  'GameState::GameState(const GameState &)': el argumento 1 no puede convertirse de 'GameStateMachine *' a 'const GameState &'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PauseState.h(10,37): message :  Razón: no se puede realizar la conversión de 'GameStateMachine *' a 'const GameState'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PauseState.h(10,37): message :  Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(15,36): error C2664:  'GameState::GameState(const GameState &)': el argumento 1 no puede convertirse de 'GameStateMachine *' a 'const GameState &'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(15,36): message :  Razón: no se puede realizar la conversión de 'GameStateMachine *' a 'const GameState'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(15,36): message :  Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\EndState.h(9,35): error C2664:  'GameState::GameState(const GameState &)': el argumento 1 no puede convertirse de 'GameStateMachine *' a 'const GameState &'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\EndState.h(9,35): message :  Razón: no se puede realizar la conversión de 'GameStateMachine *' a 'const GameState'
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\EndState.h(9,35): message :  Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
+  MainMenuState.cpp
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameStateMachine.cpp(16,66): error C2661:  'MainMenuState::MainMenuState': ninguna función sobrecargada acepta 2 argumentos
   PauseState.cpp
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.h(32,49): error C2061:  error de sintaxis: identificador 'Texture'
   PlayState.cpp
-  SDLGameObject.cpp
-C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552:  "*": el resultado de la expresión no se usa
-C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552:  "*": el resultado de la expresión no se usa
-  Texture.cpp
-  Vector2D.cpp
-C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552:  "*": el resultado de la expresión no se usa
-C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552:  "*": el resultado de la expresión no se usa
-C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552:  "*": el resultado de la expresión no se usa
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.h(32,49): error C2061:  error de sintaxis: identificador 'Texture'
   Generando código...
-C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.cpp(6,10): warning C4244:  'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
-  HolaSDL.vcxproj -> C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\bin\HolaSDLDebug.exe
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.h(32,49): error C2061:  error de sintaxis: identificador 'Texture'

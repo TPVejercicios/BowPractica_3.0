@@ -37,5 +37,7 @@ public:
 
 	void loadEndState();
 
+	SDLApplication* getApp() { return app; };
+
 };
 

@@ -13,7 +13,7 @@
 //Constructora de GameStateMachine inicializando en mainMenuState
 GameStateMachine::GameStateMachine(SDLApplication* _app) {
 	app = _app;
-	states.push(new MainMenuState(this, app->getTexture(BOTON_PLAY)));
+	states.push(new MainMenuState(this));
 }
 
 GameStateMachine::~GameStateMachine() {
