@@ -69,6 +69,7 @@
   <ItemGroup>
     <ClCompile Include="ArrowGameObject.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Bow.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="SDLApplication.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -86,6 +87,7 @@
   <ItemGroup>
     <ClInclude Include="ArrowGameObject.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="Bow.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="GameState.h" />

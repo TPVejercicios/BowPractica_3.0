@@ -13,11 +13,9 @@ using CallBackOnClick = void(SDLApplication* app);
 
 class MenuButton : public SDLGameObject, public EventHandler
 {
-private:
-	CallBackOnClick* cbOnClick;
-	int buttonID = 0;
+
 public:
-	MenuButton(Texture* _texture, Vector2D _dir, Point2D _pos, int h, int w,GameState* _owner,int _id,CallBackOnClick* _cbOnClick);
+	MenuButton(Vector2D _dir, Point2D _pos, int h, int w, Texture* _texture, GameState* _owner, int _id);// , CallBackOnClick* _cbOnClick);
 	~MenuButton();
 	virtual void update() {};
 	virtual void render() { texture->render({ pos.getX(), pos.getY(), width,height }, SDL_FLIP_NONE); };

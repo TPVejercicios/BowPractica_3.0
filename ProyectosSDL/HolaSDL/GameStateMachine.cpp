@@ -13,7 +13,9 @@
 //Constructora de GameStateMachine inicializando en mainMenuState
 GameStateMachine::GameStateMachine(SDLApplication* _app) {
 	app = _app;
-	states.push(new MainMenuState(this,app->getTexture(app->BG_MENU), app->getTexture(app->BOTON_PLAY)));
+	//states.push(new MainMenuState(this, app));
+	states.push(new PlayState(this, app));
+	//states.push(new EndState(this, app));
 }
 
 GameStateMachine::~GameStateMachine() {
@@ -23,7 +25,7 @@ GameStateMachine::~GameStateMachine() {
 
 void GameStateMachine::loadMenuState(){
 	
-	if (typeid(states.top()) == typeid(PlayState)) {
+	/*if (typeid(states.top()) == typeid(PlayState)) {
 		states.pop();
 	}
 	else if (typeid(states.top()) == typeid(PauseState)) {
@@ -37,7 +39,7 @@ void GameStateMachine::loadMenuState(){
 	}
 	else {
 		cout << "Error al cargar estado" << endl;
-	}
+	}*/
 }
 
 void GameStateMachine::loadGameState() {
@@ -57,10 +59,10 @@ void GameStateMachine::loadGameState() {
 void GameStateMachine::loadPauseState() {
 	
 	if (typeid(states.top()) == typeid(PlayState)) {
-		states.push(new PauseState(this,app->getTexture(1)));
+		states.push(new PauseState(this, app));
 	}
 	else if (typeid(states.top()) == typeid(EndState)) {
-		states.push(new EndState(this,app->getTexture(1)));
+		states.push(new EndState(this,app));
 	}
 	else {
 		cout << "Error al cargar estado" << "PauseState" << endl;
@@ -70,7 +72,7 @@ void GameStateMachine::loadPauseState() {
 void GameStateMachine::loadEndState() {
 
 	if (typeid(states.top()) == typeid(PlayState)) {
-		states.push(new EndState(this, app->getTexture(1)));
+		states.push(new EndState(this,app));
 	}
 	else {
 		cout << "Error al cargar estado" << "EndState" << endl;

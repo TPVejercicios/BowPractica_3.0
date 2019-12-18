@@ -34,12 +34,20 @@ void SDLApplication::loadTextures() {
 
 //Bucle del juego
 void SDLApplication::run() {
+	uint frame_time = 0, start_time = SDL_GetTicks();
 	while (!exit) {
-		gameStateMachine->currentState()->update();
-		gameStateMachine->currentState()->render();
-		SDL_RenderPresent(renderer);
-		gameStateMachine->currentState()->handleEvents();
+		frame_time = SDL_GetTicks() - start_time;
+		gameStateMachine->currentState()->handleEvents();	//Reacciona a los eventos del estado actual
+		if (frame_time >= FRAME_RATE) {
+			cout << "actualiza frame" << endl;
+			gameStateMachine->currentState()->update();			//Actualiza los Objetos del estado actual
+			SDL_RenderClear(renderer);							//Limpia el renderer
+			gameStateMachine->currentState()->render();			//Actualiza el renderer
+			SDL_RenderPresent(renderer);						//Muestra el renderer por pantalla
+			start_time = SDL_GetTicks();
+		}
 	}
+	cout << "App cerrada" << endl;
 }
 
 void SDLApplication::Play() {

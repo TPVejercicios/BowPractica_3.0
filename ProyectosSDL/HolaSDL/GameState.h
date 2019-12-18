@@ -16,12 +16,12 @@ class Texture;
 class GameState
 {
 protected:
-	list<GameObject*> gameObjects;
-	list<EventHandler*> eventObjects;
+	list<GameObject*> gameObjects;			//Lista de todos los objetos
+	list<EventHandler*> eventObjects;		//Lista de objetos con eventos
 	GameStateMachine* gsm = nullptr;		//Puntero al gameStateMachine
-	Texture* background = nullptr;		//Puntero al background
+	Texture* background = nullptr;			//Puntero al background
 	SDLApplication* app = nullptr;
-	void CallBackPlay(SDLApplication* app);
+	//void CallBackPlay(SDLApplication* app);
 
 	/*void CallBackLoad(SDLApplication* app) {
 		//app->Load();
@@ -37,19 +37,18 @@ protected:
 	}*/
 
 public:
-	GameState(GameStateMachine* _gsm, Texture* _bg);
+	GameState(GameStateMachine* _gsm, SDLApplication* _app);
 	~GameState();
 
 	virtual void update();
 	virtual void render();
-	virtual void handleEvents() {};
+	virtual void handleEvents();
 	SDLApplication* getApp() { return app; };
 
 	void addGameObject(GameObject* _gm) { gameObjects.push_back(_gm); };
 	void addEventObject(EventHandler* _eH) { eventObjects.push_back(_eH); };
 
 	enum buttonIDs {
-		MENU = 0, PLAY = 1, LOAD = 2, SAVE = 3 , EXIT = 4
+		MENU = 0, PLAY = 1, LOAD = 2, SAVE = 3, EXIT = 4
 	};
 };
-

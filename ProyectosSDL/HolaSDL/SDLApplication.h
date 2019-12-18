@@ -14,6 +14,7 @@ class GameStateMachine;
 const uint WIN_WIDTH = 800;							//Anchura del juego
 const uint WIN_HEIGHT = 600;						//Altura del juego
 const uint NUM_TEXTURES = 23;						//Num de texturas
+const uint FRAME_RATE = 30;
 
 
 //Estructura que ayuda a organizar la carga de texturas

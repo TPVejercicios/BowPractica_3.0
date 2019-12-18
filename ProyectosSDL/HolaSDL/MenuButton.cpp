@@ -2,12 +2,10 @@
 #include "SDLApplication.h"
 
 
-
-MenuButton::MenuButton(Texture* _texture, Vector2D _dir, Point2D _pos, int _h, int _w, GameState* _owner,int _id,CallBackOnClick* _cbOnClick)
-	: SDLGameObject(_texture, _dir, _pos, _h, _w, _owner) 
+MenuButton::MenuButton(Vector2D _dir, Point2D _pos, int _h, int _w, Texture* _texture, GameState* _owner, int _id)//,CallBackOnClick* _cbOnClick)
+	: SDLGameObject(_dir, _pos, _h, _w, _texture, _owner, _id)
 {
-	buttonID = _id;
-	cbOnClick = _cbOnClick;
+	//cbOnClick = _cbOnClick;
 
 }
 
@@ -25,7 +23,7 @@ void MenuButton::handleEvent(const SDL_Event event) {
 		r->w = this->width;
 		if (SDL_PointInRect(&p, r) == SDL_TRUE) {
 			cout << "boton clickado" << endl;
-			this->cbOnClick(ownerState->getApp());
+			//this->cbOnClick(ownerState->getApp());
 		}
 		r = nullptr;
 	}

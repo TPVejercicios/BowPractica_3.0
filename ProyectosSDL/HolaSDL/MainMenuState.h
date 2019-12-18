@@ -13,9 +13,8 @@ const int BUTTON_W = 100;
 
 class MainMenuState : public GameState
 {
-
 public:
-	MainMenuState(GameStateMachine* _gsm, Texture* _bg, Texture* _buttonPlay);
+	MainMenuState(GameStateMachine* _gsm, SDLApplication* _app);
 	//El cambio de nivel lo debe desencadenar el metodo update
 
 };

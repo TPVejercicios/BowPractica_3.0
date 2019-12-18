@@ -13,11 +13,13 @@ class SDLGameObject : public GameObject
 protected:
 	Point2D pos;
 	Vector2D dir;
-	int height, width;
+	int height, width, id;
 	Texture* texture = nullptr;
 	GameState* ownerState = nullptr;
+	bool collisionable = false;
+
 public:
-	SDLGameObject(Texture* _texture, Point2D _pos, Vector2D _dir, int _height, int _width, GameState* _owner);
+	SDLGameObject(Point2D _pos, Vector2D _dir, int _height, int _width, Texture* _texture, GameState* _owner, int _id);
 	~SDLGameObject() {};
 
 	virtual void update();

@@ -3,11 +3,13 @@
 #include "Texture.h"
 #include <SDL.h>
 #include "MenuButton.h"
+#include "SDLApplication.h"
 
-MainMenuState::MainMenuState(GameStateMachine* _gsm,Texture* _bg, Texture* _buttonPlay):
-	GameState(_gsm, _bg)
+MainMenuState::MainMenuState(GameStateMachine* _gsm, SDLApplication* _app):
+	GameState(_gsm, _app)
 {
-	MenuButton* butonPlay = new MenuButton(_buttonPlay, { 300,400 }, { BUTTON_PLAY_X,BUTTON_PLAY_Y }, BUTTON_W, BUTTON_H, this,PLAY, CallBackPlay);
+	background = app->getTexture(22);//No sale el index no sé por que
+	MenuButton* butonPlay = new MenuButton({ 300,400 }, { BUTTON_PLAY_X,BUTTON_PLAY_Y }, BUTTON_W, BUTTON_H, app->getTexture(15), this, 0);
 	this->addGameObject(butonPlay);
 	this->addEventObject(butonPlay);
 	butonPlay = nullptr;
