@@ -36,10 +36,10 @@ void SDLApplication::loadTextures() {
 void SDLApplication::run() {
 	uint frame_time = 0, start_time = SDL_GetTicks();
 	while (!exit) {
+		if (typeid(gameStateMachine->currentState()) == typeid(PauseState)) cout << "Pausado" << endl;
 		frame_time = SDL_GetTicks() - start_time;
 		gameStateMachine->currentState()->handleEvents();	//Reacciona a los eventos del estado actual
 		if (frame_time >= FRAME_RATE) {
-			cout << "actualiza frame" << endl;
 			gameStateMachine->currentState()->update();			//Actualiza los Objetos del estado actual
 			SDL_RenderClear(renderer);							//Limpia el renderer
 			gameStateMachine->currentState()->render();			//Actualiza el renderer
@@ -51,5 +51,43 @@ void SDLApplication::run() {
 }
 
 void SDLApplication::Play() {
-	gameStateMachine->loadGameState();
+	PlayState* game = new PlayState(gameStateMachine, this);
+	gameStateMachine->pushState(game);
+	game = nullptr;
 }
+
+void SDLApplication::Menu() {
+	gameStateMachine->popState();	//Se quita o el Pause/End
+	gameStateMachine->popState();	//Se quita el Play
+	//Debajo de estos 2 está el menu
+}
+
+void SDLApplication::Load() {
+	cout << "Cargar partida" << endl;
+}
+
+void SDLApplication::Save() {
+	cout << "Guardamos partida" << endl;
+}
+
+void SDLApplication::Exit() {
+	exit = true;
+}
+
+void SDLApplication::Cont() {
+	gameStateMachine->popState();	//Se quita el Pause
+}
+
+void SDLApplication::Pause() {
+	//Se añade el estado de Pause
+	cout << "Se PAUSA" << endl;
+	PauseState* pause = new PauseState(gameStateMachine, this);
+	gameStateMachine->pushState(pause);
+	pause = nullptr;
+}
+
+/*PILA DE ESTADOS
+	1. PAUSE O END
+	2. GAME	
+	3. MENU (siempre por debajo)
+*/

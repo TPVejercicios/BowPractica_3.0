@@ -13,9 +13,10 @@
 //Constructora de GameStateMachine inicializando en mainMenuState
 GameStateMachine::GameStateMachine(SDLApplication* _app) {
 	app = _app;
-	//states.push(new MainMenuState(this, app));
-	states.push(new PlayState(this, app));
-	//states.push(new EndState(this, app));
+	states.push(new MainMenuState(this, app));		//Para probar Menu
+	//states.push(new PlayState(this, app));		//Para probar Play
+	//states.push(new EndState(this, app));			//Para probar End
+	//states.push(new PauseState(this, app));			//Para probar Pause
 }
 
 GameStateMachine::~GameStateMachine() {
@@ -42,6 +43,7 @@ void GameStateMachine::loadMenuState(){
 	}*/
 }
 
+//Estas funciones las acabo de ver antes de desconectar y nose si valen para algo o no porque ya estan los CallBacks en SDLApplication
 void GameStateMachine::loadGameState() {
 
 	if (typeid(states.top()) == typeid(MainMenuState)) {

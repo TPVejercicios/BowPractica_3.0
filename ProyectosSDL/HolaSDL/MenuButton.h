@@ -11,11 +11,20 @@ using Point2D = Vector2D;
 
 using CallBackOnClick = void(SDLApplication* app);
 
+void CallBackPlay(SDLApplication* app);
+void CallBackLoad(SDLApplication* app);
+void CallBackSave(SDLApplication* app);
+void CallBackMenu(SDLApplication* app);
+void CallBackExit(SDLApplication* app);
+void CallBackCont(SDLApplication* app);
+void CallBackPause(SDLApplication* app);
+
 class MenuButton : public SDLGameObject, public EventHandler
 {
-
+	CallBackOnClick* cbOnClick = nullptr;
+	SDLApplication* app;
 public:
-	MenuButton(Vector2D _dir, Point2D _pos, int h, int w, Texture* _texture, GameState* _owner, int _id);// , CallBackOnClick* _cbOnClick);
+	MenuButton(Vector2D _dir, Point2D _pos, int h, int w, Texture* _texture, GameState* _owner, int _id, SDLApplication* _app, CallBackOnClick* _cbOnClick);// , CallBackOnClick* _cbOnClick);
 	~MenuButton();
 	virtual void update() {};
 	virtual void render() { texture->render({ pos.getX(), pos.getY(), width,height }, SDL_FLIP_NONE); };

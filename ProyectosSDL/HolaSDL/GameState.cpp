@@ -16,14 +16,12 @@ GameState::~GameState() {
 
 
 void GameState::update() {
-	cout << "updating" << endl;
 	for (auto it = gameObjects.begin(); it != gameObjects.end(); ++it) {
 		(*it)->update();
 	}
 }
 
 void GameState::render() {
-	cout << "Renderizando cosas" << endl;
 	background->render({0,0,background->getW(),background->getH()}, SDL_FLIP_NONE);
 	for (auto it = gameObjects.begin(); it != gameObjects.end(); ++it) {
 		(*it)->render();
@@ -32,8 +30,7 @@ void GameState::render() {
 
 void GameState::handleEvents() {
 	SDL_Event event;
-	while (SDL_PollEvent(&event) && !exit) {
-		cout << "comprobando eventos" << endl;
+	while (SDL_PollEvent(&event)) {
 		if (event.type != SDL_QUIT) {
 			for (auto eventIT = eventObjects.begin(); eventIT != eventObjects.end(); ++eventIT) {
 				auto* aux = dynamic_cast<EventHandler*>(*eventIT);
@@ -43,7 +40,4 @@ void GameState::handleEvents() {
 	}
 }
 
-void CallBackPlay(SDLApplication* app) { 
-	app->Play(); 
-}
 

@@ -16,6 +16,5 @@ class MainMenuState : public GameState
 public:
 	MainMenuState(GameStateMachine* _gsm, SDLApplication* _app);
 	//El cambio de nivel lo debe desencadenar el metodo update
-
 };
 

@@ -21,21 +21,6 @@ protected:
 	GameStateMachine* gsm = nullptr;		//Puntero al gameStateMachine
 	Texture* background = nullptr;			//Puntero al background
 	SDLApplication* app = nullptr;
-	//void CallBackPlay(SDLApplication* app);
-
-	/*void CallBackLoad(SDLApplication* app) {
-		//app->Load();
-	}
-	void CallBackExit(SDLApplication* app) {
-		//app->Exit();
-	}
-	void CallBackSave(SDLApplication* app) {
-		//app->Save();
-	}
-	void CallBackMenu(SDLApplication* app) {
-		//app->Menu();
-	}*/
-
 public:
 	GameState(GameStateMachine* _gsm, SDLApplication* _app);
 	~GameState();
@@ -49,6 +34,6 @@ public:
 	void addEventObject(EventHandler* _eH) { eventObjects.push_back(_eH); };
 
 	enum buttonIDs {
-		MENU = 0, PLAY = 1, LOAD = 2, SAVE = 3, EXIT = 4
+		MENU = 0, PLAY = 1, LOAD = 2, SAVE = 3, EXIT = 4, PAUSE = 5
 	};
 };

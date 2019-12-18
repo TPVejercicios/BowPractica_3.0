@@ -1,11 +1,21 @@
 #include "PlayState.h"
 #include "SDLApplication.h"
+#include "GameState.h"
+#include "Texture.h"
+#include <SDL.h>
+#include "MenuButton.h"
+//Antiguos ArrowGameObjects
 #include "Bow.h"
 
 
 PlayState::PlayState(GameStateMachine* _gsm, SDLApplication* _app) : GameState(_gsm, _app) {
 	background = app->getTexture(2);
 	CreateBow();
+	//Boton Menu
+	MenuButton* butonPause = new MenuButton({ 700,0 }, { 100, 100 }, 100, 100, app->getTexture(19), this, 0, app, CallBackPause);
+	this->addGameObject(butonPause);
+	this->addEventObject(butonPause);
+	butonPause = nullptr;
 }
 
 void PlayState::CreateBow() {

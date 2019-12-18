@@ -56,9 +56,11 @@ public:
 	};
 
 	void Play();
-	void Menu() {};
-	void Load() {};
-	void Exit() {};
-	void Save() {};
+	void Menu();
+	void Load();
+	void Exit();
+	void Save();
+	void Cont();
+	void Pause();
 };
 

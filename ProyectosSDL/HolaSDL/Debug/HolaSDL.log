@@ -1,3 +1,4 @@
-﻿  GameState.cpp
-C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.cpp(35,39): warning C4551:  la llamada a la función no tiene lista de argumentos
+﻿  PauseState.cpp
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552:  "*": el resultado de la expresión no se usa
+C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552:  "*": el resultado de la expresión no se usa
   HolaSDL.vcxproj -> C:\Users\Oskar\Desktop\BowPractica_3.0\ProyectosSDL\bin\HolaSDLDebug.exe
