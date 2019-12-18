@@ -12,7 +12,6 @@ int main(int argc, char* argv[]) {
 	try {
 		SDLApplication app;
 		cout << "APP INICIADA CORRECTAMENTE EN EL MENU" << endl;
-		system("pause");
 		app.run();
 	}
 	catch (exception e) {

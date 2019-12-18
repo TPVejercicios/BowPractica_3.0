@@ -17,7 +17,7 @@ SDLApplication::SDLApplication() {
 		srand(time(NULL));
 		loadTextures();
 		gameStateMachine = new GameStateMachine(this);
-		SDL_RenderPresent(renderer);
+		
 	}
 }	
 
@@ -34,10 +34,10 @@ void SDLApplication::loadTextures() {
 
 //Bucle del juego
 void SDLApplication::run() {
-	
 	while (!exit) {
 		gameStateMachine->currentState()->update();
 		gameStateMachine->currentState()->render();
+		SDL_RenderPresent(renderer);
 		gameStateMachine->currentState()->handleEvents();
 	}
 }

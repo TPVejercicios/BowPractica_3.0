@@ -22,6 +22,5 @@ public:
 
 	virtual void update();
 	virtual void render();
-	virtual void handleEvent() = 0;
 };
 

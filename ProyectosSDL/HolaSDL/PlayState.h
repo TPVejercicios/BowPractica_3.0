@@ -12,7 +12,7 @@ class PlayState : public GameState
 {
 public:
 	//El cambio de nivel lo debe desencadenar el metodo update
-	PlayState(GameStateMachine* _gsm) : GameState(_gsm) {};
+	PlayState(GameStateMachine* _gsm, Texture* _texture) : GameState(_gsm, _texture) {};
 	~PlayState() {};
 	virtual void update() {};
 	virtual void render() {};

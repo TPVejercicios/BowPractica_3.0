@@ -39,5 +39,8 @@ public:
 
 	SDLApplication* getApp() { return app; };
 
+	virtual void render() {};
+	virtual void update() {};
+
 };
 

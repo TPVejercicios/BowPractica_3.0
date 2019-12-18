@@ -5,38 +5,28 @@
 #include "GameObject.h"
 #include "GameStateMachine.h"
 
-GameState::GameState(GameStateMachine* _gsm) {
+GameState::GameState(GameStateMachine* _gsm, Texture* _bg) {
 	gsm = _gsm;
-	background = new Background(600, 800, gsm->getApp()->getTexture(BG_MENU));
+	background = _bg;
+
 }
 
 GameState::~GameState() {
 
 }
 
-/*
-GameState::void update() {
 
+void GameState::update() {
+	for (auto it = gameObjects.begin(); it != gameObjects.end(); ++it) {
+		(*it)->update();
+	}
 }
 
-GameState::void render() {
-	SDL_RenderClear(renderer);
-	background->render();
+void GameState::render() {
+	background->render({0,0,background->getW(),background->getH()}, SDL_FLIP_NONE);
 	for (auto it = gameObjects.begin(); it != gameObjects.end(); ++it) {
 		(*it)->render();
 	}
-	SDL_RenderPresent(renderer);
 }
 
-GameState::void handleEvents() {
-	SDL_Event event;
-	while (SDL_PollEvent(&event) && !exit) {
-		if (event.type != SDL_QUIT) {
-			for (auto eventIT = eventObjects.begin(); eventIT != eventObjects.end(); ++eventIT) {
-				auto* aux = dynamic_cast<EventHandler*>(*eventIT);
-				(aux)->handleEvent(event);
-			}
-		}
-		else exit = true;
-	}
-}*/
+

@@ -4,9 +4,7 @@
 class EventHandler
 {
 public:
-	EventHandler() {};
-	virtual ~EventHandler() {};
-	virtual void handleEvent(const SDL_Event event) = 0;
+virtual void handleEvent(const SDL_Event event) = 0;
 };
 
 //No tiene .cpp
