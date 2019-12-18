@@ -4,7 +4,7 @@
 
 
 SDLGameObject::SDLGameObject(Texture* _texture, Vector2D _pos, Point2D _dir, int _height, int _width, GameState* _owner) 
-	:GameObject() {
+	 {
 	texture = _texture;
 	pos = _pos;
 	dir = _dir;

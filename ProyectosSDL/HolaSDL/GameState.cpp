@@ -29,4 +29,7 @@ void GameState::render() {
 	}
 }
 
+void CallBackPlay(SDLApplication* app) { 
+	app->Play(); 
+}
 

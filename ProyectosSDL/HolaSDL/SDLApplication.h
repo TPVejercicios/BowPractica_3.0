@@ -53,5 +53,11 @@ public:
 		BOW_1 = 9, BOW_2 = 10, BUBBLE = 11, BUTTERFLY = 12, DIGITS = 13, REWARDS = 14, BOTON_PLAY = 15, BOTON_GUARDAR = 16,
 		BOTON_MENU = 17, BOTON_REINICIAR = 18, BOTON_PAUSA = 19, BOTON_REANUDAR = 20, BG_END = 21, BG_MENU = 22
 	};
+
+	void Play();
+	void Menu() {};
+	void Load() {};
+	void Exit() {};
+	void Save() {};
 };
 

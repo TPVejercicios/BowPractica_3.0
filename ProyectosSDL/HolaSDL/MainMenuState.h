@@ -17,6 +17,6 @@ class MainMenuState : public GameState
 public:
 	MainMenuState(GameStateMachine* _gsm, Texture* _bg, Texture* _buttonPlay);
 	//El cambio de nivel lo debe desencadenar el metodo update
-	virtual void update() {};
+
 };
 

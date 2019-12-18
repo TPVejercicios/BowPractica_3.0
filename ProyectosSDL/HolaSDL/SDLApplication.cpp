@@ -41,3 +41,7 @@ void SDLApplication::run() {
 		gameStateMachine->currentState()->handleEvents();
 	}
 }
+
+void SDLApplication::Play() {
+	gameStateMachine->loadGameState();
+}

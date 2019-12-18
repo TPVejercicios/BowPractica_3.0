@@ -43,6 +43,7 @@ void GameStateMachine::loadMenuState(){
 void GameStateMachine::loadGameState() {
 
 	if (typeid(states.top()) == typeid(MainMenuState)) {
+		cout << "CAMBIO ESCENA A PLAYSTATE" << endl;
 		//states.push(new PlayState(this));
 	}
 	else if (typeid(states.top()) == typeid(PauseState)) {
