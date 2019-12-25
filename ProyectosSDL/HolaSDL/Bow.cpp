@@ -4,16 +4,15 @@ Bow::Bow(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameSta
 	SDLGameObject(_pos, _dir, _h, _w, _texture, _owner,_id) {
 	collisionable = false;
 }
-/*
+
 void Bow::update() {
 	pos.setY(pos.getY() + dir.getY() * BOW_SPEED);
 	if (pos.getY() < 0) pos.setY(0);
-	if (pos.getY() > WIN_HEIGHT - h) pos.setY(WIN_HEIGHT - h);
+	if (pos.getY() > WIN_HEIGHT - height) pos.setY(WIN_HEIGHT - height);
 }
-*/
+
 void Bow::handleEvent(const SDL_Event event) {
-	cout << "ARCOOOOO" << endl;
-	/*if (event.type == SDL_KEYDOWN) {
+	if (event.type == SDL_KEYDOWN) {
 		//Tecla abajo
 		if (event.key.keysym.sym == SDLK_DOWN) dir.setY(1);
 		//Tecla ariba
@@ -25,17 +24,17 @@ void Bow::handleEvent(const SDL_Event event) {
 			//ownerState->createArrow({ pos.getX(),pos.getY() + h / 2 });
 		}
 		//Tecla recarga
-		else if (event.key.keysym.sym == SDLK_LEFT && !charged && game->getRemainingShots() > 0) {
+		/*else if (event.key.keysym.sym == SDLK_LEFT && !charged && game->getRemainingShots() > 0) {
 			charged = true;
 			//changeTexture();
-		}
+		}*/
 		else if (event.key.keysym.sym == SDLK_p) {
 			//game->gime100Arrows();
 		}
 	}
 	else {
 		dir.setY(0);
-	}*/
+	}
 }
 
 

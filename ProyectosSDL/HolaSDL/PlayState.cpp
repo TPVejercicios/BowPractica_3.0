@@ -29,3 +29,7 @@ void PlayState::CreateBow() {
 	eventObjects.push_back(bow);
 	bow = nullptr;
 }
+
+texture* changeTexture(enum textureName) {
+	return texture[textureName];
+}

@@ -17,7 +17,7 @@ private:
 	bool charged = true;			//Variable que determina si el bow está cargado
 public:
 	Bow(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id);
-	//virtual void update();
+	virtual void update();
 	virtual void handleEvent(const SDL_Event event);
 	//virtual void saveToFile(string &data);
 	//void changeTexture();

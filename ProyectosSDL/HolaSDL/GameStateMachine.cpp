@@ -16,7 +16,7 @@ GameStateMachine::GameStateMachine(SDLApplication* _app) {
 	states.push(new MainMenuState(this, app));		//Para probar Menu
 	//states.push(new PlayState(this, app));		//Para probar Play
 	//states.push(new EndState(this, app));			//Para probar End
-	//states.push(new PauseState(this, app));			//Para probar Pause
+	//states.push(new PauseState(this, app));		//Para probar Pause
 }
 
 GameStateMachine::~GameStateMachine() {

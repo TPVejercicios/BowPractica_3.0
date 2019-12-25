@@ -3,11 +3,6 @@
 
 class MenuButton;
 
-/*PlayState: Implementa el estado del juego del Arrows propiamente dicho. Incluye por tanto gran parte de
-los atributos y funcionalidad que antes tenamos en la clase Game. La antigua lista de objetos del juego ahora
-sera el escenario (list<GameObject*>) heredado de GameState. El cambio de nivel lo debe desencadenar el
-metodo update.*/
-
 //Constantes para la creación de bow
 using uint = unsigned int;
 const uint START_BOW_POS_X = 0;
@@ -28,4 +23,5 @@ public:
 	//El cambio de nivel lo debe desencadenar el metodo update
 	PlayState(GameStateMachine* _gsm, SDLApplication* _app);
 	~PlayState() {};
+	changeTexture(enum textureName);
 };
