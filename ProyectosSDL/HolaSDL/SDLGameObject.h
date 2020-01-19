@@ -1,12 +1,15 @@
 #pragma once
 #include "GameObject.h"
 #include "Vector2D.h"
+#include <SDL.h>
 
 class GameState;
 class Vector2D;
 class Texture;
 
 using Point2D = Vector2D;
+using uint = unsigned int;
+
 
 class SDLGameObject : public GameObject
 {
@@ -18,6 +21,9 @@ protected:
 	Texture* texture = nullptr;
 	GameState* ownerState = nullptr;
 	bool collisionable = false;
+	bool deleting = false;
+
+	//Métodos privados
 	void changeTexture(int index);
 
 public:
@@ -26,5 +32,8 @@ public:
 
 	virtual void update();
 	virtual void render();
+	SDL_Rect getRect() const { return { pos.getX(),pos.getY(),width,height }; };
+	bool isCollisionable() { return collisionable; };
+	bool isDeleting() { return deleting; };
 };
 

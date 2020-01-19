@@ -27,7 +27,7 @@ SDLApplication::~SDLApplication() {
 	for (int i = 0; i < NUM_TEXTURES; i++) delete textures[i];
 }
 
-//Carga las texturas en un vector (couts for debug)
+//Carga las texturas en un vector
 void SDLApplication::loadTextures() {
 	for (int i = 0; i < NUM_TEXTURES; i++) {
 		textures[i] = new Texture(renderer, PATHS[i].filename, PATHS[i].rows, PATHS[i].colls);

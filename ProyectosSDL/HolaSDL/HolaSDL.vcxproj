@@ -70,7 +70,9 @@
     <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="ArrowGameObject.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Ballon.cpp" />
     <ClCompile Include="Bow.cpp" />
+    <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="SDLApplication.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -89,7 +91,9 @@
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="ArrowGameObject.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="Ballon.h" />
     <ClInclude Include="Bow.h" />
+    <ClInclude Include="Butterfly.h" />
     <ClInclude Include="EndState.h" />
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="GameState.h" />

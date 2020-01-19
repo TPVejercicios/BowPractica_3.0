@@ -12,6 +12,7 @@ void Bow::update() {
 	if (pos.getY() > WIN_HEIGHT - height) pos.setY(WIN_HEIGHT - height);
 }
 
+//Se encarga de la gestión de los eventos del Bow
 void Bow::handleEvent(const SDL_Event event) {
 	if (event.type == SDL_KEYDOWN) {
 		//Tecla abajo
@@ -21,16 +22,16 @@ void Bow::handleEvent(const SDL_Event event) {
 		//Tecla disparo
 		else if (event.key.keysym.sym == SDLK_RIGHT && charged) {
 			charged = false;
-			this->changeTexture(static_cast<PlayState*>(ownerState)->getApp()->BOW_1);
+			this->changeTexture(static_cast<PlayState*>(ownerState)->getApp()->BOW_2);
 			static_cast<PlayState*>(ownerState)->createArrow(pos.getX(), pos.getY() + height / 2);
 		}
 		//Tecla recarga
 		else if (event.key.keysym.sym == SDLK_LEFT && !charged && static_cast<PlayState*>(ownerState)->canShoot()) {
 			charged = true;
-			this->changeTexture(static_cast<PlayState*>(ownerState)->getApp()->BOW_2);
+			this->changeTexture(static_cast<PlayState*>(ownerState)->getApp()->BOW_1);
 		}
 		else if (event.key.keysym.sym == SDLK_p) {
-			//game->gime100Arrows();
+			static_cast<PlayState*>(ownerState)->giveArrows();
 		}
 	}
 	else {

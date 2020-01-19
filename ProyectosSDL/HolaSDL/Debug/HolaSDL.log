@@ -1,1 +1,5 @@
-﻿
+﻿  Ballon.cpp
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Ballon.cpp(14,11): warning C4018: '>': no coinciden signed/unsigned
+  HolaSDL.vcxproj -> G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\bin\HolaSDLDebug.exe

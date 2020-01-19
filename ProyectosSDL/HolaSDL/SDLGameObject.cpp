@@ -3,10 +3,7 @@
 #include "GameState.h"
 #include "SDLApplication.h"
 
-
-
-SDLGameObject::SDLGameObject(Vector2D _pos, Point2D _dir, int _height, int _width, Texture* _texture, GameState* _owner, int _id, int _speed)
-{
+SDLGameObject::SDLGameObject(Vector2D _pos, Point2D _dir, int _height, int _width, Texture* _texture, GameState* _owner, int _id, int _speed){
 	texture = _texture;
 	pos = _pos;
 	dir = _dir;
@@ -21,7 +18,7 @@ void SDLGameObject::render() {
 	texture->render({ pos.getX(),pos.getY(),width,height }, SDL_FLIP_NONE);
 }
 
-//Update generico para flechas, globos y mariposas
+//Update generico para flechas
 void SDLGameObject::update() {
 	this->pos.setX(pos.getX() + dir.getX() * speed);
 	this->pos.setY(pos.getY() + dir.getY() * speed);
@@ -33,3 +30,4 @@ void SDLGameObject::changeTexture(int index) {
 	this->texture = app->getTexture(index);
 	app = nullptr;
 }
+
