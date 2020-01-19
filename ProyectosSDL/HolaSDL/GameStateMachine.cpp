@@ -8,15 +8,14 @@
 #include "Texture.h"
 #include <typeinfo>
 #include <iostream>
+#include <stdexcept>
 
+/*GameStateMachine se encarga de la gestión de los estados*/
 
 //Constructora de GameStateMachine inicializando en mainMenuState
 GameStateMachine::GameStateMachine(SDLApplication* _app) {
 	app = _app;
-	states.push(new MainMenuState(this, app));		//Para probar Menu
-	//states.push(new PlayState(this, app));		//Para probar Play
-	//states.push(new EndState(this, app));			//Para probar End
-	//states.push(new PauseState(this, app));		//Para probar Pause
+	states.push(new MainMenuState(this, app));
 }
 
 GameStateMachine::~GameStateMachine() {
@@ -26,7 +25,7 @@ GameStateMachine::~GameStateMachine() {
 
 void GameStateMachine::loadMenuState(){
 	
-	/*if (typeid(states.top()) == typeid(PlayState)) {
+	if (typeid(states.top()) == typeid(PlayState)) {
 		states.pop();
 	}
 	else if (typeid(states.top()) == typeid(PauseState)) {
@@ -39,45 +38,46 @@ void GameStateMachine::loadMenuState(){
 		states.pop();
 	}
 	else {
-		cout << "Error al cargar estado" << endl;
-	}*/
+		throw domain_error("No se ha podido cargar el estado MenuState");
+	}
 }
 
 //Estas funciones las acabo de ver antes de desconectar y nose si valen para algo o no porque ya estan los CallBacks en SDLApplication
 void GameStateMachine::loadGameState() {
 
 	if (typeid(states.top()) == typeid(MainMenuState)) {
-		cout << "CAMBIO ESCENA A PLAYSTATE" << endl;
-		//states.push(new PlayState(this));
+		states.push(new PlayState(this, app));
 	}
 	else if (typeid(states.top()) == typeid(PauseState)) {
 		states.pop();
 	}
 	else {
-		cout << "Error al cargar estado " << "PlayState" <<endl;
+		throw domain_error("No se ha podido cargar el estado PlayState");
 	}
 }
 
+//Carga en función del actual estado al estado de pausa
 void GameStateMachine::loadPauseState() {
 	
 	if (typeid(states.top()) == typeid(PlayState)) {
 		states.push(new PauseState(this, app));
 	}
 	else if (typeid(states.top()) == typeid(EndState)) {
-		states.push(new EndState(this,app));
+		states.push(new EndState(this, app));
 	}
 	else {
-		cout << "Error al cargar estado" << "PauseState" << endl;
+		throw domain_error("No se ha podido cargar el estado PauseState");
 	}
 }
 
+//Carga el estado EndState si el estado actual es PlayState
 void GameStateMachine::loadEndState() {
 
 	if (typeid(states.top()) == typeid(PlayState)) {
 		states.push(new EndState(this,app));
 	}
 	else {
-		cout << "Error al cargar estado" << "EndState" << endl;
+		throw domain_error("No se ha podido cargar el estado EndState");
 	}
 }
 

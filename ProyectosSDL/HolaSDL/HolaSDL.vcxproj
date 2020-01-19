@@ -67,6 +67,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="ArrowGameObject.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bow.cpp" />
@@ -85,6 +86,7 @@
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arrow.h" />
     <ClInclude Include="ArrowGameObject.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Bow.h" />

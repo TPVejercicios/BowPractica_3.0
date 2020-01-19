@@ -5,15 +5,14 @@
 #include "GameObject.h"
 #include "GameStateMachine.h"
 
-GameState::GameState(GameStateMachine* _gsm, SDLApplication* _app) {
-	gsm = _gsm;
-	app = _app;
-}
+
+
+GameState::GameState(GameStateMachine* _gsm, SDLApplication* _app) :gsm(_gsm), app(_app) {}
+
 
 GameState::~GameState() {
 
 }
-
 
 void GameState::update() {
 	for (auto it = gameObjects.begin(); it != gameObjects.end(); ++it) {
@@ -22,7 +21,7 @@ void GameState::update() {
 }
 
 void GameState::render() {
-	background->render({0,0,background->getW(),background->getH()}, SDL_FLIP_NONE);
+	background->render({ 0,0,background->getW(),background->getH() }, SDL_FLIP_NONE);
 	for (auto it = gameObjects.begin(); it != gameObjects.end(); ++it) {
 		(*it)->render();
 	}

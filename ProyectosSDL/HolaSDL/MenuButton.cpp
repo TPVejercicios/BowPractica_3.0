@@ -3,7 +3,7 @@
 
 
 MenuButton::MenuButton(Vector2D _dir, Point2D _pos, int _h, int _w, Texture* _texture, GameState* _owner, int _id, SDLApplication* _app, CallBackOnClick* _cbOnClick)//,CallBackOnClick* _cbOnClick)
-	: SDLGameObject(_dir, _pos, _h, _w, _texture, _owner, _id){
+	: SDLGameObject(_dir, _pos, _h, _w, _texture, _owner, _id,0){
 	app = _app;
 	cbOnClick = _cbOnClick;
 }

@@ -20,15 +20,7 @@ protected:
 	list<EventHandler*> eventObjects;		//Lista de objetos con eventos
 	GameStateMachine* gsm = nullptr;		//Puntero al gameStateMachine
 	Texture* background = nullptr;			//Puntero al background
-	SDLApplication* app = nullptr;
-public:
-	GameState(GameStateMachine* _gsm, SDLApplication* _app);
-	~GameState();
-
-	virtual void update();
-	virtual void render();
-	virtual void handleEvents();
-	SDLApplication* getApp() { return app; };
+	SDLApplication* app = nullptr;		
 
 	void addGameObject(GameObject* _gm) { gameObjects.push_back(_gm); };
 	void addEventObject(EventHandler* _eH) { eventObjects.push_back(_eH); };
@@ -36,4 +28,11 @@ public:
 	enum buttonIDs {
 		MENU = 0, PLAY = 1, LOAD = 2, SAVE = 3, EXIT = 4, PAUSE = 5
 	};
+public:
+	GameState(GameStateMachine* _gsm, SDLApplication* _app);
+	~GameState();
+	virtual void update();
+	virtual void render();
+	virtual void handleEvents();
+	SDLApplication* getApp() { return app; };
 };

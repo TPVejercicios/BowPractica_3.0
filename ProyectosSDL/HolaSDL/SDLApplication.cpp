@@ -5,13 +5,14 @@
 #include "PauseState.h"
 #include "EndState.h"
 
+//Constructor del juego
 SDLApplication::SDLApplication() {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	window = SDL_CreateWindow("Practica2", SDL_WINDOWPOS_CENTERED,
+	window = SDL_CreateWindow("BOW3.0", SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	if (window == nullptr || renderer == nullptr)
-		cout << "Error cargando SDL" << endl;
+		throw domain_error("Error al cargar SDL");
 	else
 	{
 		srand(time(NULL));
@@ -21,6 +22,7 @@ SDLApplication::SDLApplication() {
 	}
 }	
 
+//Destrucción de todas las texturas
 SDLApplication::~SDLApplication() {
 	for (int i = 0; i < NUM_TEXTURES; i++) delete textures[i];
 }
@@ -32,7 +34,18 @@ void SDLApplication::loadTextures() {
 	}
 }
 
-//Bucle del juego
+//Devuelve la la textura en función de un indice
+Texture* SDLApplication::getTexture(int index) {
+	if (index <= NUM_TEXTURES) {
+		return this->textures[index];
+	}
+	else
+	{
+		throw invalid_argument("El indice no corresponde a ninguna textura");
+	}
+}
+
+//Bucle principal del juego
 void SDLApplication::run() {
 	uint frame_time = 0, start_time = SDL_GetTicks();
 	while (!exit) {
@@ -85,6 +98,8 @@ void SDLApplication::Pause() {
 	gameStateMachine->pushState(pause);
 	pause = nullptr;
 }
+
+
 
 /*PILA DE ESTADOS
 	1. PAUSE O END

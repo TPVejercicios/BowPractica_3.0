@@ -14,12 +14,14 @@ protected:
 	Point2D pos;
 	Vector2D dir;
 	int height, width, id;
+	int speed;
 	Texture* texture = nullptr;
 	GameState* ownerState = nullptr;
 	bool collisionable = false;
+	void changeTexture(int index);
 
 public:
-	SDLGameObject(Point2D _pos, Vector2D _dir, int _height, int _width, Texture* _texture, GameState* _owner, int _id);
+	SDLGameObject(Point2D _pos, Vector2D _dir, int _height, int _width, Texture* _texture, GameState* _owner, int _id, int speed);
 	~SDLGameObject() {};
 
 	virtual void update();

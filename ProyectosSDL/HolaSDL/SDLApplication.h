@@ -46,7 +46,7 @@ public:
 	~SDLApplication();
 	void run();
 	void loadTextures();
-	Texture* getTexture(int index) { return textures[index]; };
+	Texture* getTexture(int index);
 	//Indice de texturas
 	enum indexTexturas
 	{
