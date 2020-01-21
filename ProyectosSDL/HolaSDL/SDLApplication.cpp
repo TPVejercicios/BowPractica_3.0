@@ -18,13 +18,16 @@ SDLApplication::SDLApplication() {
 		srand(time(NULL));
 		loadTextures();
 		gameStateMachine = new GameStateMachine(this);
-		
 	}
 }	
 
 //Destrucción de todas las texturas
 SDLApplication::~SDLApplication() {
 	for (int i = 0; i < NUM_TEXTURES; i++) delete textures[i];
+	delete gameStateMachine;
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
 }
 
 //Carga las texturas en un vector
@@ -47,18 +50,30 @@ Texture* SDLApplication::getTexture(int index) {
 
 //Bucle principal del juego
 void SDLApplication::run() {
-	uint frame_time = 0, start_time = SDL_GetTicks();
+	uint32_t startTime, frameTime, createBallon, ballonCreated;
+	startTime = ballonCreated = SDL_GetTicks();
 	while (!exit) {
-		if (typeid(gameStateMachine->currentState()) == typeid(PauseState)) cout << "Pausado" << endl;
-		frame_time = SDL_GetTicks() - start_time;
+		createBallon = SDL_GetTicks() - ballonCreated;
+		frameTime = SDL_GetTicks() - startTime;
 		gameStateMachine->currentState()->handleEvents();	//Reacciona a los eventos del estado actual
-		if (frame_time >= FRAME_RATE) {
+		if (frameTime >= FRAME_RATE) {
 			gameStateMachine->currentState()->update();			//Actualiza los Objetos del estado actual
 			SDL_RenderClear(renderer);							//Limpia el renderer
 			gameStateMachine->currentState()->render();			//Actualiza el renderer
 			SDL_RenderPresent(renderer);						//Muestra el renderer por pantalla
-			start_time = SDL_GetTicks();
+			startTime = SDL_GetTicks();
+			if (typeid(*gameStateMachine->currentState()) == typeid(PlayState)) {
+				dynamic_cast<PlayState*>(gameStateMachine->currentState())->checkCollision();
+				if (dynamic_cast<PlayState*>(gameStateMachine->currentState())->endGame()) {
+					Exit();
+				}
+			}
 		}
+		if (createBallon >= currFrameBallon && typeid(*gameStateMachine->currentState()) == typeid(PlayState)) {
+			dynamic_cast<PlayState*>(gameStateMachine->currentState())->createBallon();
+			ballonCreated = SDL_GetTicks();
+		}
+		dynamic_cast<GameState*>(gameStateMachine->currentState())->deleteObjects();
 	}
 	cout << "App cerrada" << endl;
 }
@@ -98,8 +113,6 @@ void SDLApplication::Pause() {
 	gameStateMachine->pushState(pause);
 	pause = nullptr;
 }
-
-
 
 /*PILA DE ESTADOS
 	1. PAUSE O END

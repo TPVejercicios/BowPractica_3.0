@@ -2,12 +2,16 @@
 #include "SDLGameObject.h"
 #include "Texture.h"
 
+#pragma region CONSTANTES
 const uint MIN_X = 150;
 const uint MAX_X = 750;
 const uint MAX_Y = 550;
 const int MAX_SPEED_BUT = 2;
 const int DEAD_DIR = 1;
 const int DEAD_SPEED = 10;
+#pragma endregion
+
+
 typedef enum
 {
 	ALIVE = 0, DEAD = 1
@@ -26,5 +30,6 @@ public:
 		:SDLGameObject(_pos, _dir, _h, _w, _texture, _owner, _id, _speed) {};
 	virtual void render() { texture->renderFrame(getRect(), row, col, flip); };
 	virtual void update();
+	virtual void startDestruction();
 };
 

@@ -1,9 +1,14 @@
 #pragma once
 #include "GameState.h"
+#include "Vector2D.h"
+#include "Reward.h"
+
 
 class MenuButton;
+class ScoreBoard;
 
 using uint = unsigned int;
+using Point2D = Vector2D;
 
 //Constantes para los diferentes objectos de la escena
 #pragma region CONST
@@ -42,24 +47,57 @@ const uint BUTT_MAX_X = 750;
 const uint BUTT_MAX_Y = 550;
 const uint BUT_SPEED = 2;
 
-#pragma endregion
+//Constantes para los puntos
+const int POINTS_TO_ADD = 10;
+const int BONUS_POINTS = 2;
+const int POINTS_TO_SUB = 15;
 
-enum indexObjets {
-	OBJECT_BOW = 0, OBJECT_ARROW = 1, OBJECT_BALLON = 2, OBJECT_BUTTERFLY = 3, OBJECT_REWARD = 4
-};
+//Constantes para rewards 
+const uint REWARD_H = 50;
+const uint REWARD_W = 50;
+const uint REWARD_SPEED = 1;
+const int MAX_REWARDS = 4;
+
+#pragma endregion
 
 class PlayState : public GameState
 {
 private:
 	int remaingShoots = START_SHOOTS;
+	int currButterfies = 0;
+	int currLevel = 0;
+	int currPoints = 0;
+	int currScaleBallon = 1;
+	bool outOfArrows = false;
+	ScoreBoard* SCB = nullptr;
 	void createBow();
-	void createBallon();
 	void createButterfly();
 public:
 	//El cambio de nivel lo debe desencadenar el metodo update
 	PlayState(GameStateMachine* _gsm, SDLApplication* _app);
-	~PlayState() {};
-	void createArrow(int x, int y);
+	~PlayState() { SCB = nullptr; };
+
+	void checkCollision();
+
+	void createArrow(Point2D _pos);
+	void createBallon();
+	void createSCB();
+
 	bool canShoot() { return remaingShoots > 0 ? true : false; };
-	void giveArrows() { remaingShoots += 100; };
+	void giveArrows() { remaingShoots += 100; };//Para probar flechas
+	void loadLevel();
+	bool endGame();
+	void nextLevel();
+	void deleteAllBallons();
+	void deleteAllArrows();
+	void deleteAllRewards();
+	void deleteAllbutterflies();
+	void stackArrows(int stack);
+	int getRemainingShots() { return remaingShoots; };
+
+	//Métodos para los rewards
+	void createReward(Point2D _pos);
+	void addArrows(int _arrowsToAdd) { remaingShoots += _arrowsToAdd; };
+	void addButterflies(int _butterfliesToAdd);							
+	void setBallonScale(int _newScale) { currScaleBallon = _newScale; };
 };

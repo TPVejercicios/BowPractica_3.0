@@ -74,6 +74,8 @@
     <ClCompile Include="Bow.cpp" />
     <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="EndState.cpp" />
+    <ClCompile Include="Reward.cpp" />
+    <ClCompile Include="ScoreBoard.cpp" />
     <ClCompile Include="SDLApplication.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
@@ -98,6 +100,8 @@
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="PlayState.h" />
+    <ClInclude Include="Reward.h" />
+    <ClInclude Include="ScoreBoard.h" />
     <ClInclude Include="SDLApplication.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameStateMachine.h" />

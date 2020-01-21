@@ -13,12 +13,18 @@ SDLGameObject::SDLGameObject(Vector2D _pos, Point2D _dir, int _height, int _widt
 	id = _id;
 	speed = _speed;
 }
+
+SDLGameObject::~SDLGameObject() {
+	texture = nullptr;
+	ownerState = nullptr;
+}
+
 //Render generico
 void SDLGameObject::render() {
 	texture->render({ pos.getX(),pos.getY(),width,height }, SDL_FLIP_NONE);
 }
 
-//Update generico para flechas
+//Update generico
 void SDLGameObject::update() {
 	this->pos.setX(pos.getX() + dir.getX() * speed);
 	this->pos.setY(pos.getY() + dir.getY() * speed);

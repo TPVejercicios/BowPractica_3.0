@@ -22,5 +22,7 @@ public:
 	};
 	virtual void render() { texture->renderFrame(getRect(), row, col, SDL_FLIP_NONE); };
 	virtual void update();
+	virtual void startDestruction();
+	void setScale(int _newScale) { width *= _newScale; height *= _newScale; };
 };
 

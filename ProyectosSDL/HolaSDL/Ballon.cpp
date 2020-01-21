@@ -1,4 +1,6 @@
 #include "Ballon.h"
+#include "GameState.h"
+#include "PlayState.h"
 
 void Ballon::update() {
 
@@ -13,7 +15,17 @@ void Ballon::update() {
 		col++;
 		if (col > texture->getNumCols() && !deleting) {
 			deleting = true;
-			//game->killObject(this);
+			static_cast<GameState*>(ownerState)->killObject(this);
 		}
+	}
+}
+
+void Ballon::startDestruction() {
+	collisionable = false;
+	dir.setY(0);
+	currStatus = PUNCTURED;
+	int rnd = rand() % 10;
+	if (rnd < 3) {
+		static_cast<PlayState*>(ownerState)->createReward(pos);
 	}
 }

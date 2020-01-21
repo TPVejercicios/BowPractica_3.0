@@ -1,5 +1,6 @@
 #include "Bow.h"
 #include "PlayState.h"
+#include "GameState.h"
 
 Bow::Bow(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id, int _speed) :
 	SDLGameObject(_pos, _dir, _h, _w, _texture, _owner,_id,_speed) {
@@ -22,13 +23,13 @@ void Bow::handleEvent(const SDL_Event event) {
 		//Tecla disparo
 		else if (event.key.keysym.sym == SDLK_RIGHT && charged) {
 			charged = false;
-			this->changeTexture(static_cast<PlayState*>(ownerState)->getApp()->BOW_2);
-			static_cast<PlayState*>(ownerState)->createArrow(pos.getX(), pos.getY() + height / 2);
+			this->changeTexture(static_cast<GameState*>(ownerState)->BOW_2);
+			static_cast<PlayState*>(ownerState)->createArrow({ pos.getX(), pos.getY() + height / 2 });
 		}
 		//Tecla recarga
 		else if (event.key.keysym.sym == SDLK_LEFT && !charged && static_cast<PlayState*>(ownerState)->canShoot()) {
 			charged = true;
-			this->changeTexture(static_cast<PlayState*>(ownerState)->getApp()->BOW_1);
+			this->changeTexture(static_cast<GameState*>(ownerState)->BOW_1);
 		}
 		else if (event.key.keysym.sym == SDLK_p) {
 			static_cast<PlayState*>(ownerState)->giveArrows();
@@ -41,14 +42,6 @@ void Bow::handleEvent(const SDL_Event event) {
 
 
 /*
-void Bow::changeTexture() {
-	texture = game->getTextureBow(charged);
-	w = texture->getW() / PROPOR;
-	if (!charged) {
-		pos.setX(GAP);
-	}
-	else pos.setX(0);
-}
 
 void Bow::saveToFile(string &data) {
 	ArrowGameObject::saveToFile(data);

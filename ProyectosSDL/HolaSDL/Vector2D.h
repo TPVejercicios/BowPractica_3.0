@@ -22,6 +22,5 @@ public:
 	Vector2D operator+(const Vector2D& v) const;
 	Vector2D operator*(int d) const;
 	int operator*(const Vector2D& d) const;
-
 };
 

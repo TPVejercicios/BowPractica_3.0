@@ -20,7 +20,7 @@ protected:
 	int speed;
 	Texture* texture = nullptr;
 	GameState* ownerState = nullptr;
-	bool collisionable = false;
+	bool collisionable = true;
 	bool deleting = false;
 
 	//Métodos privados
@@ -28,12 +28,15 @@ protected:
 
 public:
 	SDLGameObject(Point2D _pos, Vector2D _dir, int _height, int _width, Texture* _texture, GameState* _owner, int _id, int speed);
-	~SDLGameObject() {};
+	SDLGameObject() {};
+	~SDLGameObject();
 
 	virtual void update();
 	virtual void render();
 	SDL_Rect getRect() const { return { pos.getX(),pos.getY(),width,height }; };
 	bool isCollisionable() { return collisionable; };
 	bool isDeleting() { return deleting; };
+	int getId() { return id; }
+	virtual void startDestruction() {};
 };
 

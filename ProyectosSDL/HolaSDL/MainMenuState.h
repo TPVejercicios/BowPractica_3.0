@@ -4,6 +4,7 @@
 class MenuButton;
 class Texture;				
 
+#pragma region CONSTANTES
 //Constantes para determinar boton play
 const int BUTTON_PLAY_X = 150;
 const int BUTTON_PLAY_Y = 400;
@@ -19,6 +20,7 @@ const int BUTTON_EXIT_Y = 400;
 //Constantes para determinar las dimensiones de los botones
 const int BUTTON_H = 100;
 const int BUTTON_W = 100;
+#pragma endregion
 
 class MainMenuState : public GameState
 {

@@ -9,7 +9,8 @@ MenuButton::MenuButton(Vector2D _dir, Point2D _pos, int _h, int _w, Texture* _te
 }
 
 MenuButton::~MenuButton() {
-
+	cbOnClick = nullptr;
+	app = nullptr;
 }
 
 void MenuButton::handleEvent(const SDL_Event event) {
@@ -21,7 +22,6 @@ void MenuButton::handleEvent(const SDL_Event event) {
 		r->h = this->height;
 		r->w = this->width;
 		if (SDL_PointInRect(&p, r) == SDL_TRUE) {
-			cout << "boton clickado" << endl;
 			cbOnClick(app);
 		}
 		r = nullptr;

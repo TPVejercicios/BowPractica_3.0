@@ -12,6 +12,7 @@ class GameStateMachine
 private:
 	stack<GameState*> states;
 	SDLApplication* app = nullptr;
+	void cleanStack();
 public:
 	//Estado inicial: MainMenuState
 	GameStateMachine(SDLApplication* _app);
@@ -27,7 +28,7 @@ public:
 	void changeState(GameState* _currState) { states.pop(); states.push(_currState); };
 
 	//Quita el último estado de la pila
-	void popState() { states.pop(); };
+	void popState() { cleanStack(); };
 
 	void loadMenuState();
 

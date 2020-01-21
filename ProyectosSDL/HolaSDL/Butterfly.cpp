@@ -1,4 +1,5 @@
 #include "Butterfly.h"
+#include "GameState.h"
 
 void Butterfly::update() {
 
@@ -12,7 +13,7 @@ void Butterfly::update() {
 		pos.setY(pos.getY() + DEAD_DIR * DEAD_SPEED);
 		if (pos.getY() > MAX_Y && !deleting) {
 			deleting = true;
-			//game->killObject(this);
+			dynamic_cast<GameState*>(ownerState)->killObject(this);
 		}
 	}
 	//Comprobar colisiones con los límites de la pantalla
@@ -26,4 +27,9 @@ void Butterfly::update() {
 		dir.setY(-dir.getY());
 		flip = SDL_FLIP_HORIZONTAL;
 	}
+}
+
+void Butterfly::startDestruction() {
+	collisionable = false;
+	currState = DEAD;
 }

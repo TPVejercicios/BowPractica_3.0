@@ -19,23 +19,34 @@ GameStateMachine::GameStateMachine(SDLApplication* _app) {
 }
 
 GameStateMachine::~GameStateMachine() {
-	
+	int size = states.size();
+	for (int i = 0; i < size; i++ ) {
+		auto aux = states.top();
+		delete aux;
+		states.pop();
+	}
+	app = nullptr;
 }
 
+void GameStateMachine::cleanStack() {
+	auto aux = states.top();
+	delete aux;
+	states.pop();
+}
 
 void GameStateMachine::loadMenuState(){
 	
 	if (typeid(states.top()) == typeid(PlayState)) {
-		states.pop();
+		cleanStack();
 	}
 	else if (typeid(states.top()) == typeid(PauseState)) {
-		states.pop();
-		states.pop();
+		cleanStack();
+		cleanStack();
 	}
 	else if (typeid(states.top()) == typeid(EndState)) {
-		states.pop();
-		states.pop();
-		states.pop();
+		cleanStack();
+		cleanStack();
+		cleanStack();
 	}
 	else {
 		throw domain_error("No se ha podido cargar el estado MenuState");
