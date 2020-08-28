@@ -23,13 +23,13 @@ void Bow::handleEvent(const SDL_Event event) {
 		//Tecla disparo
 		else if (event.key.keysym.sym == SDLK_RIGHT && charged) {
 			charged = false;
-			this->changeTexture(static_cast<GameState*>(ownerState)->BOW_2);
+			this->texture = ownerState->getApp()->getTexture(Resources::TextureId::DischargedBow);
 			static_cast<PlayState*>(ownerState)->createArrow({ pos.getX(), pos.getY() + height / 2 });
 		}
 		//Tecla recarga
 		else if (event.key.keysym.sym == SDLK_LEFT && !charged && static_cast<PlayState*>(ownerState)->canShoot()) {
 			charged = true;
-			this->changeTexture(static_cast<GameState*>(ownerState)->BOW_1);
+			this->texture = ownerState->getApp()->getTexture(Resources::TextureId::LoadedBow);
 		}
 		else if (event.key.keysym.sym == SDLK_p) {
 			static_cast<PlayState*>(ownerState)->giveArrows();
@@ -40,17 +40,9 @@ void Bow::handleEvent(const SDL_Event event) {
 	}
 }
 
-
-/*
-
-void Bow::saveToFile(string &data) {
-	ArrowGameObject::saveToFile(data);
-	data += " charged " + to_string(charged);
+void Bow::saveObject(ofstream& write)
+{
+	//Guardamos el id, la posición en Y y si el arco está cargado
+	write << id << " " << pos.getY() << " " << charged; //cargado 1 descargado 0
 }
 
-void Bow::notCharged() {
-	charged = false;
-	changeTexture();
-}
-
-*/

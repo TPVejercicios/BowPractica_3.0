@@ -39,6 +39,7 @@ void Reward::handleEvent(const SDL_Event event) {
 				currState = PICKED;
 			}
 		}
+		delete r;
 		r = nullptr;
 	}
 }
@@ -53,17 +54,11 @@ void Reward::update() {
 }
 
 void Reward::render() {
-	//rewardsTex->renderFrame({ pos.getX() + REWARD_GAP_X,pos.getY() + REWARD_GAP_Y,width,height }, currRow, currCol, 0, SDL_FLIP_NONE);
-	rewardsTex->renderFrame({ pos.getX() + REWARD_GAP_X,pos.getY() + REWARD_GAP_Y,width,height } , currRow, currCol, 0, SDL_FLIP_NONE);
+	rewardsTex->renderFrame(SDL_Rect({ (int)pos.getX() + REWARD_GAP_X,(int)pos.getY() + REWARD_GAP_Y,(int)width,(int)height }), currRow, currCol, 0, SDL_FLIP_NONE);
 	if (currState == INSIDE) {
-		bubleTex->render({ pos.getX(),pos.getY(),BUBBLE_Y_SIZE,BUBBLE_X_SIZE }, SDL_FLIP_NONE);
+		bubleTex->render(SDL_Rect({ (int)pos.getX(),(int)pos.getY(),BUBBLE_Y_SIZE,BUBBLE_X_SIZE }), SDL_FLIP_NONE);
 	}
 }
-
-/*void Reward::saveToFile(string& data) {
-	ArrowGameObject::saveToFile(data);
-	data += " kind " + to_string(currRow) + " state " + to_string(currState);
-}*/
 
 void Reward::setState(int state) {
 	switch (state) {

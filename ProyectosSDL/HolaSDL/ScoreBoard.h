@@ -2,6 +2,7 @@
 #include "SDLGameObject.h"
 #include <vector>
 #include <iostream>
+#include "checkML.h"
 
 class PlayState;
 
@@ -43,6 +44,8 @@ public:
 	virtual void render();
 	virtual void update() {};
 	void updatePoints(int _points);
+	void saveObject(ofstream& write)override;
 	void updateArrows(int _numArrows) { arrowsToRender = _numArrows; };
 	void arrowsCheat(int _nums) { arrowsToRender += _nums; cout << "Se han cheteado " << _nums << " flechas." << endl; };
+	void setSCB(int nivel, int puntos, int flechas);
 };

@@ -13,10 +13,14 @@ const uint PROPOR = 4;
 
 class Bow : public SDLGameObject,public EventHandler{
 private:
-	bool charged = true;			//Variable que determina si el bow está cargado
+	//Variable que determina si el bow está cargado
+	bool charged = true;			
 public:
 	Bow(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id,int _speed);
-	virtual void update();
-	virtual void handleEvent(const SDL_Event event);
-	//virtual void saveToFile(string &data);
+	//Mueve al arco
+	void update()override;
+	//Escucha los eventos que conciernen al arco
+	void handleEvent(const SDL_Event event) override;
+	void saveObject(ofstream& write) override;
+	inline void changeBowStatus(int status) { status == 0 ? charged = false : charged = true; };
 };

@@ -14,7 +14,8 @@ using namespace std;
 	 }
 }
 
-void Texture::load(string filename, uint nRows, uint nCols) {
+
+ void Texture::load(string filename, uint nRows, uint nCols) {
 	SDL_Surface* tempSurface = IMG_Load(filename.c_str());
 	if (tempSurface == nullptr) throw std::invalid_argument("Error loading surface from " + filename);// ("Error loading surface from " + filename);
 	//texture = nullptr;
@@ -37,7 +38,8 @@ void Texture::render(const SDL_Rect& destRect, SDL_RendererFlip flip) const {
 	SDL_RenderCopyEx(renderer, texture, &srcRect, &destRect, 0, 0, flip);
 }
 
-void Texture::renderFrame(const SDL_Rect& destRect, int row, int col, int angle, SDL_RendererFlip flip) const {
+
+void Texture::renderFrame(const SDL_Rect& destRect, int row, int col, int angle,SDL_RendererFlip flip) const {
 	SDL_Rect srcRect;
 	srcRect.x = fw * col;
 	srcRect.y = fh * row;

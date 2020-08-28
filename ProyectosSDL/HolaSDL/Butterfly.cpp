@@ -1,5 +1,6 @@
 #include "Butterfly.h"
 #include "GameState.h"
+#include "PlayState.h"
 
 void Butterfly::update() {
 
@@ -20,16 +21,24 @@ void Butterfly::update() {
 	if (pos.getX() > MAX_X || pos.getX() < MIN_X) {
 		dir.setX(-dir.getX());
 		dir.setY(dir.getY());
-		flip = SDL_FLIP_VERTICAL;
+		//flip = SDL_RendererFlip::SDL_FLIP_HORIZONTAL;
 	}
-	else if (pos.getY() > MAX_Y || pos.getY() < 0) {
+	else if (pos.getY() > MAX_Y || pos.getY() < 25) {
 		dir.setX(dir.getX());
 		dir.setY(-dir.getY());
-		flip = SDL_FLIP_HORIZONTAL;
+		//flip = SDL_RendererFlip::SDL_FLIP_VERTICAL;
 	}
 }
 
 void Butterfly::startDestruction() {
+	static_cast<PlayState*>(ownerState)->removeButterfly();
 	collisionable = false;
 	currState = DEAD;
+	storable = false;
+}
+
+void Butterfly::saveObject(ofstream& write)
+{
+	//Guardamos el id, la posición y el estado actual de la mariposa
+	write << id << " " << pos.getX() << " " << pos.getY() << " " << dir.getX() << " " << dir.getY();
 }

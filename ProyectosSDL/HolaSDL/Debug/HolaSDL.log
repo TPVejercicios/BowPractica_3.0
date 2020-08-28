@@ -1,4 +1,66 @@
-﻿  GameState.cpp
-G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,26): warning C4552: "*": el resultado de la expresión no se usa
-G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(20,32): warning C4552: "*": el resultado de la expresión no se usa
+﻿  Arrow.cpp
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,29): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,35): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(104,15): warning C4150: eliminación de puntero a tipo 'ScoreBoard' incompleto; no se ha llamado a un destructor
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(8): message : vea la declaración de 'ScoreBoard'
+  Ballon.cpp
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,29): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,35): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(104,15): warning C4150: eliminación de puntero a tipo 'ScoreBoard' incompleto; no se ha llamado a un destructor
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(8): message : vea la declaración de 'ScoreBoard'
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Ballon.cpp(20,11): warning C4018: '>': no coinciden signed/unsigned
+  Bow.cpp
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,29): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,35): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(104,15): warning C4150: eliminación de puntero a tipo 'ScoreBoard' incompleto; no se ha llamado a un destructor
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(8): message : vea la declaración de 'ScoreBoard'
+  Butterfly.cpp
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,29): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,35): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(104,15): warning C4150: eliminación de puntero a tipo 'ScoreBoard' incompleto; no se ha llamado a un destructor
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(8): message : vea la declaración de 'ScoreBoard'
+  GameState.cpp
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,29): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,35): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(104,15): warning C4150: eliminación de puntero a tipo 'ScoreBoard' incompleto; no se ha llamado a un destructor
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(8): message : vea la declaración de 'ScoreBoard'
+  GameStateMachine.cpp
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,29): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,35): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(104,15): warning C4150: eliminación de puntero a tipo 'ScoreBoard' incompleto; no se ha llamado a un destructor
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(8): message : vea la declaración de 'ScoreBoard'
+  PlayState.cpp
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,29): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,35): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(104,15): warning C4150: eliminación de puntero a tipo 'ScoreBoard' incompleto; no se ha llamado a un destructor
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(8): message : vea la declaración de 'ScoreBoard'
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.cpp(247,110): warning C4244: '+=': conversión de 'double' a 'int'; posible pérdida de datos
+  Reward.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,29): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,35): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(104,15): warning C4150: eliminación de puntero a tipo 'ScoreBoard' incompleto; no se ha llamado a un destructor
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(8): message : vea la declaración de 'ScoreBoard'
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Reward.cpp(24,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Reward.cpp(25,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Reward.cpp(30,24): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Reward.cpp(31,24): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Reward.cpp(32,15): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Reward.cpp(33,15): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  SDLApplication.cpp
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,29): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,35): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(104,15): warning C4150: eliminación de puntero a tipo 'ScoreBoard' incompleto; no se ha llamado a un destructor
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\PlayState.h(8): message : vea la declaración de 'ScoreBoard'
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\SDLApplication.cpp(19,13): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\SDLApplication.cpp(28,20): warning C4018: '<': no coinciden signed/unsigned
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\SDLApplication.cpp(37,20): warning C4018: '<': no coinciden signed/unsigned
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\SDLApplication.cpp(45,12): warning C4018: '>': no coinciden signed/unsigned
+  ScoreBoard.cpp
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,29): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\Vector2D.h(21,35): warning C4552: "*": el resultado de la expresión no se usa
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\ScoreBoard.cpp(27,20): warning C4018: '<': no coinciden signed/unsigned
+  Generando código...
+G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\HolaSDL\GameState.cpp(111): warning C4715: 'GameState::getObjById': no todas las rutas de acceso de control devuelven un valor
   HolaSDL.vcxproj -> G:\2do\1erCuatrimestre\TPV\PracticaBow3\BowPractica_3.0\ProyectosSDL\bin\HolaSDLDebug.exe

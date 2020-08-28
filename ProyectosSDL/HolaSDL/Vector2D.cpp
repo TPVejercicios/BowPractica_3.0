@@ -17,12 +17,12 @@ Vector2D Vector2D::operator+(const Vector2D& v) const {
 	return r;
 }
 
-Vector2D Vector2D::operator*(int d) const {
+Vector2D Vector2D::operator*(double d) const {
 	Vector2D r;
 	r.X = X * d;
 	r.X = Y * d;
 	return r;
 }
-int Vector2D::operator*(const Vector2D& d) const {
+double Vector2D::operator*(const Vector2D& d) const {
 	return d.X * X + d.Y * Y;
 }

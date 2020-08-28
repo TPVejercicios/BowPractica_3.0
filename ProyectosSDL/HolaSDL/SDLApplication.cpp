@@ -4,6 +4,7 @@
 #include "PlayState.h"
 #include "PauseState.h"
 #include "EndState.h"
+#include "Resources.h"
 
 //Constructor del juego
 SDLApplication::SDLApplication() {
@@ -23,7 +24,8 @@ SDLApplication::SDLApplication() {
 
 //Destrucción de todas las texturas
 SDLApplication::~SDLApplication() {
-	for (int i = 0; i < NUM_TEXTURES; i++) delete textures[i];
+	auto size = Resources::images_.size();
+	for (int i = 0; i < size; i++) delete textures[i];
 	delete gameStateMachine;
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
@@ -32,28 +34,25 @@ SDLApplication::~SDLApplication() {
 
 //Carga las texturas en un vector
 void SDLApplication::loadTextures() {
-	for (int i = 0; i < NUM_TEXTURES; i++) {
-		textures[i] = new Texture(renderer, PATHS[i].filename, PATHS[i].rows, PATHS[i].colls);
+	for (int i = 0; i < Resources::images_.size(); i++) {
+		textures[i] = new Texture(renderer, Resources::images_[i].fileName, 
+			Resources::images_[i].row, Resources::images_[i].colls);
 	}
 }
 
 //Devuelve la la textura en función de un indice
 Texture* SDLApplication::getTexture(int index) {
-	if (index <= NUM_TEXTURES) {
-		return this->textures[index];
-	}
-	else
-	{
+	if (index > Resources::images_.size() || index < 0) {
 		throw invalid_argument("El indice no corresponde a ninguna textura");
 	}
+	return textures[index];
 }
 
 //Bucle principal del juego
 void SDLApplication::run() {
-	uint32_t startTime, frameTime, createBallon, ballonCreated;
-	startTime = ballonCreated = SDL_GetTicks();
+	uint32_t startTime, frameTime;
+	startTime = SDL_GetTicks();
 	while (!exit) {
-		createBallon = SDL_GetTicks() - ballonCreated;
 		frameTime = SDL_GetTicks() - startTime;
 		gameStateMachine->currentState()->handleEvents();	//Reacciona a los eventos del estado actual
 		if (frameTime >= FRAME_RATE) {
@@ -62,39 +61,27 @@ void SDLApplication::run() {
 			gameStateMachine->currentState()->render();			//Actualiza el renderer
 			SDL_RenderPresent(renderer);						//Muestra el renderer por pantalla
 			startTime = SDL_GetTicks();
-			if (typeid(*gameStateMachine->currentState()) == typeid(PlayState)) {
-				dynamic_cast<PlayState*>(gameStateMachine->currentState())->checkCollision();
-				if (dynamic_cast<PlayState*>(gameStateMachine->currentState())->endGame()) {
-					Exit();
-				}
-			}
 		}
-		if (createBallon >= currFrameBallon && typeid(*gameStateMachine->currentState()) == typeid(PlayState)) {
-			dynamic_cast<PlayState*>(gameStateMachine->currentState())->createBallon();
-			ballonCreated = SDL_GetTicks();
-		}
-		dynamic_cast<GameState*>(gameStateMachine->currentState())->deleteObjects();
+		gameStateMachine->deleteStates();
 	}
 	cout << "App cerrada" << endl;
 }
 
 void SDLApplication::Play() {
-	PlayState* game = new PlayState(gameStateMachine, this);
-	gameStateMachine->pushState(game);
-	game = nullptr;
+	gameStateMachine->loadPlayState();
 }
 
 void SDLApplication::Menu() {
-	gameStateMachine->popState();	//Se quita o el Pause/End
-	gameStateMachine->popState();	//Se quita el Play
-	//Debajo de estos 2 está el menu
+	gameStateMachine->loadMenuState();
 }
 
 void SDLApplication::Load() {
+	gameStateMachine->nextStateToPush(STATES::LoadState);	
 	cout << "Cargar partida" << endl;
 }
 
 void SDLApplication::Save() {
+	gameStateMachine->nextStateToPush(STATES::SaveState);
 	cout << "Guardamos partida" << endl;
 }
 
@@ -103,19 +90,17 @@ void SDLApplication::Exit() {
 }
 
 void SDLApplication::Cont() {
-	gameStateMachine->popState();	//Se quita el Pause
+	gameStateMachine->killStates(1);
+}
+
+void SDLApplication::endState(int status) {
+	//	status
+	//	0 = sin flechas
+	//	1 = sin mariposas
+	//	2 = has ganado
+	gameStateMachine->loadEndState(status);
 }
 
 void SDLApplication::Pause() {
-	//Se añade el estado de Pause
-	cout << "Se PAUSA" << endl;
-	PauseState* pause = new PauseState(gameStateMachine, this);
-	gameStateMachine->pushState(pause);
-	pause = nullptr;
+	gameStateMachine->loadPauseState(false);
 }
-
-/*PILA DE ESTADOS
-	1. PAUSE O END
-	2. GAME	
-	3. MENU (siempre por debajo)
-*/

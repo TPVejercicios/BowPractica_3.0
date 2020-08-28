@@ -27,7 +27,9 @@ public:
 	MenuButton(Vector2D _dir, Point2D _pos, int h, int w, Texture* _texture, GameState* _owner, int _id, SDLApplication* _app, CallBackOnClick* _cbOnClick);// , CallBackOnClick* _cbOnClick);
 	~MenuButton();
 	virtual void update() {};
-	virtual void render() { texture->render({ pos.getX(), pos.getY(), width,height }, SDL_FLIP_NONE); };
+	virtual void render() override {
+		texture->render(SDL_Rect({ (int)pos.getX(), (int)pos.getY(), (int)width,(int)height }), SDL_FLIP_NONE);
+	};
 	virtual void handleEvent(const SDL_Event event);
 };
 

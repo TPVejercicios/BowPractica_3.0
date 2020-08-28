@@ -13,7 +13,7 @@ class GameStateMachine;
 //Constantes para game
 const uint WIN_WIDTH = 800;							//Anchura del juego
 const uint WIN_HEIGHT = 600;						//Altura del juego
-const uint NUM_TEXTURES = 23;						//Num de texturas
+const uint NUM_TEXTURES = 29;						//Num de texturas
 const uint FRAME_RATE = 30;
 
 
@@ -23,14 +23,6 @@ struct image
 	string filename;
 	uint colls, rows;
 };
-
-//Array con las texturas y su número de columnas y filas para facilitar la carga
-const image PATHS[] = { {"..\\images\\Arrow1.png", 1, 1}, {"..\\images\\Arrow2.png", 1, 1}, {"..\\images\\Background01.png", 1, 1}, {"..\\images\\Background02.png", 1, 1}, {"..\\images\\Background03.png", 1, 1},
-{"..\\images\\Background04.png", 1, 1}, {"..\\images\\Background05.png", 1, 1}, {"..\\images\\Background06.png", 1, 1}, {"..\\images\\Ballons.png", 6, 7}, {"..\\images\\Bow1.png", 1, 1}, 
-{"..\\images\\Bow2.png", 1, 1}, {"..\\images\\Bubble.png", 1, 1}, {"..\\images\\Butterfly.png", 10, 4}, {"..\\images\\Digits.png", 10, 1}, {"..\\images\\Rewards.png", 8, 10}, {"..\\images\\BotonPlay.png", 1, 1},
-{"..\\images\\BotonGuardar.png", 8, 10}, {"..\\images\\BotonMenu.png", 8, 10}, {"..\\images\\BotonRestart.png", 8, 10}, {"..\\images\\BotonPausa.png", 8, 10}, {"..\\images\\BotonContinuar.png", 8, 10},
-{"..\\images\\BackgroundEnd.png", 8, 10}, {"..\\images\\BackgroundMenu.png", 8, 10} };
-
 
 
 class SDLApplication
@@ -54,7 +46,10 @@ public:
 	void Exit();
 	void Save();
 	void Cont();
+	void endState(int status);
 	void Pause();
 	void setBallonFrame(int frame) { currFrameBallon = frame; };
+	uint getWindowsW() { return WIN_WIDTH; }
+	uint getWindowsH() { return WIN_HEIGHT; }
 };
 

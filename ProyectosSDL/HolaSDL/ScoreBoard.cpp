@@ -3,11 +3,15 @@
 
 //Constructor de scoreBoard
 //Point2D _pos, Vector2D _dir, int _height, int _width, Texture* _texture, GameState* _owner, int _id, int speed
-ScoreBoard::ScoreBoard(Texture* _score, Texture* _arrow, int _points, int _arrows, PlayState* _game) {
+ScoreBoard::ScoreBoard(Texture* _score, Texture* _arrow, int _points, int _arrows, PlayState* _game) 
+	: SDLGameObject() {
 	scoreTexture = _score;
 	arrowTexture = _arrow;
 	arrowsToRender = _arrows;
 	game = _game;
+	id = 99;
+	storable = true;
+	ownerState = _game;
 	updatePoints(_points);
 	render();
 }
@@ -52,4 +56,17 @@ void ScoreBoard::updatePoints(int _points) {
 		x += DIGIT_RECT_W;
 		marcador.push_back(currScore);
 	}
+}
+
+void ScoreBoard::saveObject(ofstream& write)
+{
+	auto ps = static_cast<PlayState*>(ownerState);
+	write << id << " " << ownerState->getCurrLevel() << " " <<
+		currentPoints << " " << ps->getRemainingShots() << " " << ps->getButterfliesLeft();
+}
+
+void ScoreBoard::setSCB(int nivel, int puntos, int flechas)
+{
+	currentPoints = puntos;
+	arrowsToRender = flechas;
 }

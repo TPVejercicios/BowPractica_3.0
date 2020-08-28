@@ -24,6 +24,7 @@ void MenuButton::handleEvent(const SDL_Event event) {
 		if (SDL_PointInRect(&p, r) == SDL_TRUE) {
 			cbOnClick(app);
 		}
+		delete r;
 		r = nullptr;
 	}
 }
@@ -52,11 +53,6 @@ void CallBackCont(SDLApplication* app) {
 	app->Cont();
 }
 
-
 void CallBackPause(SDLApplication* app) {
 	app->Pause();
 }
-
-
-
-

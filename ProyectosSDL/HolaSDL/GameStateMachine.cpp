@@ -9,6 +9,10 @@
 #include <typeinfo>
 #include <iostream>
 #include <stdexcept>
+#include <stack>
+#include "checkML.h"
+
+
 
 /*GameStateMachine se encarga de la gestión de los estados*/
 
@@ -28,53 +32,50 @@ GameStateMachine::~GameStateMachine() {
 	app = nullptr;
 }
 
-void GameStateMachine::cleanStack() {
+//Elimina el estado top de la pila
+void GameStateMachine::popStack() {
 	auto aux = states.top();
 	delete aux;
 	states.pop();
 }
 
+//Carga el menuState en función del estado que le ha llamado
 void GameStateMachine::loadMenuState(){
-	
-	if (typeid(states.top()) == typeid(PlayState)) {
-		cleanStack();
+	//si estamos en playState eliminamos un estado, el playState
+	if (typeid(*(states.top())).name() == typeid(PlayState).name()) {
+		statesToErase++;
 	}
-	else if (typeid(states.top()) == typeid(PauseState)) {
-		cleanStack();
-		cleanStack();
-	}
-	else if (typeid(states.top()) == typeid(EndState)) {
-		cleanStack();
-		cleanStack();
-		cleanStack();
+	//Si estamos en pause o end eliminados dos estados
+	else if (typeid(*(states.top())).name() == typeid(PauseState).name() ||
+		typeid(*(states.top())).name() == typeid(EndState).name()) {
+		statesToErase += 2;
 	}
 	else {
+		cout << typeid(&(states.top())).name() << endl;
 		throw domain_error("No se ha podido cargar el estado MenuState");
 	}
 }
 
-//Estas funciones las acabo de ver antes de desconectar y nose si valen para algo o no porque ya estan los CallBacks en SDLApplication
-void GameStateMachine::loadGameState() {
-
-	if (typeid(states.top()) == typeid(MainMenuState)) {
+//Carga el playState en función del estado que le ha llamado
+void GameStateMachine::loadPlayState() {
+	if (typeid(*(states.top())).name() == typeid(MainMenuState).name()) {
 		states.push(new PlayState(this, app));
 	}
-	else if (typeid(states.top()) == typeid(PauseState)) {
-		states.pop();
+	else if (typeid(*(states.top())).name() == typeid(PauseState).name()
+		|| typeid(*(states.top())).name() == typeid(EndState).name()) {
+		statesToErase++;
 	}
 	else {
 		throw domain_error("No se ha podido cargar el estado PlayState");
 	}
 }
 
-//Carga en función del actual estado al estado de pausa
-void GameStateMachine::loadPauseState() {
-	
-	if (typeid(states.top()) == typeid(PlayState)) {
-		states.push(new PauseState(this, app));
-	}
-	else if (typeid(states.top()) == typeid(EndState)) {
-		states.push(new EndState(this, app));
+//Carga el estado PauseState si el estado que le llama es el PlayState
+void GameStateMachine::loadPauseState(bool status) {
+	if (typeid(*(states.top())).name() == typeid(PlayState).name()) {
+		aux = states.top();
+		states.push(new PauseState(this, app, status));
+		states.top()->activeFreeze();
 	}
 	else {
 		throw domain_error("No se ha podido cargar el estado PauseState");
@@ -82,15 +83,126 @@ void GameStateMachine::loadPauseState() {
 }
 
 //Carga el estado EndState si el estado actual es PlayState
-void GameStateMachine::loadEndState() {
-
-	if (typeid(states.top()) == typeid(PlayState)) {
-		states.push(new EndState(this,app));
+void GameStateMachine::loadEndState(int status) {
+	if (typeid(*(states.top())).name() == typeid(PlayState).name()) {
+		states.push(new EndState(this, app, status));
 	}
 	else {
 		throw domain_error("No se ha podido cargar el estado EndState");
 	}
 }
 
+void GameStateMachine::saveGame()
+{
+	if (typeid(*(states.top())).name() == typeid(PauseState).name()) {
+		//Destruimos el estado pausa
+		popStack();
+		//Enviamos a guardar todos los objetos "guardables" de gameState
+		states.top()->saveGameObjects();
+		//Devolvemos el estado top de los estados a la pausa
+		loadPauseState(true);
+	}
+	else {
+		throw domain_error("No se ha podido cargar el estado EndState");
+	}
+}
 
+void GameStateMachine::loadGame()
+{
+	if (typeid(*(states.top())).name() == typeid(MainMenuState).name() /*|| typeid(*(states.top())).name() == typeid(EndState).name()*/) {
+		ifstream read("saveGame.txt");
+		if (read.is_open()) {
+			auto playState = new PlayState(this, app, true);
+			int cadena;
+			while (!read.eof()) {
+				read >> cadena;
+				switch (cadena)
+				{
+				case 99:
+					int nivel, puntos, flechas, butterflies;
+					read >> nivel >> puntos >> flechas >> butterflies;
+					playState->setLevel(nivel, puntos, flechas, butterflies);
+					break;
+				case (int)Resources::TextureId::Ballons:
+					//posX , posY y velocidad
+					int x, y, speed;
+					read >> x >> y >> speed;
+					playState->createBallon(x, y, speed);
+					break;
+				case (int)Resources::TextureId::Butterflies:
+					double dirX, dirY;
+					read >> x >> y >> dirX >> dirY;
+					playState->createButterfly({ (double)x,(double)y }, { (double)dirX,(double)dirY });
+					break;
+				case (int)Resources::TextureId::DischargedBow:
+					int status;
+					read >> y >> status;
+					playState->setBow(y, status);
+					break;
+				case (int)Resources::TextureId::LoadedBow: //17
+					read >> y >> status;
+					playState->setBow(y, status);
+					break;
+				case (int)Resources::TextureId::ArrowRight:
+					//id , posición y stacks
+					int stacks;
+					read >> x >> y >> stacks;
+					playState->createArrow(x, y, stacks);
+					break;
+				case (int)Resources::TextureId::Rewards:
+
+					break;
+				default:
+					read.ignore();
+					break;
+				}
+			}
+			read.close();
+			states.push(playState);
+			playState = nullptr;
+			loadPauseState(true);
+		}
+	}
+	else 
+	{
+		throw domain_error("No se ha podido leer el fichero de guardado");
+	}
+}
+
+void GameStateMachine::deleteStates()
+{
+	if (statesToErase > 0) {
+		for (int i = 0; i < statesToErase; i++) {
+			popStack();
+		}
+		statesToErase = 0;
+	}
+	if (nextState != STATES::Clean) {
+		switch (nextState)
+		{
+		case::STATES::EndState:
+			loadEndState(2);
+			break;
+		case::STATES::PlayState:
+			loadPlayState();
+			break;
+		case::STATES::PauseState:
+			loadPauseState(false);
+			break;
+		case::STATES::MenuState:
+			loadMenuState();
+			break;
+		case::STATES::SaveState:
+			saveGame();
+			break;
+		case::STATES::LoadState:
+			loadGame();
+			break;
+		default:
+			throw exception("No existe el estado");
+			break;
+		}
+		nextState = STATES::Clean;
+	}
+}
 

@@ -36,8 +36,8 @@ const uint MAX_X_BALLON = 600;
 const uint MIN_Y_BALLON = 700;
 const uint BALLON_MAX_SPEED = 18;
 const uint BALLON_MIN_SPEED = 5;
-const uint BALLON_H = 100;
-const uint BALLON_W = 100;
+const double BALLON_H = 100;
+const double BALLON_W = 100;
 
 //Constantes para la creación de una mariposa
 const uint BUTTERFLY_H = 96;
@@ -58,46 +58,103 @@ const uint REWARD_W = 50;
 const uint REWARD_SPEED = 1;
 const int MAX_REWARDS = 4;
 
+
+
 #pragma endregion
 
 class PlayState : public GameState
 {
 private:
+	//Flechas que quedan al jugador
 	int remaingShoots = START_SHOOTS;
+	//Número de mariposas que hay en el nivel
 	int currButterfies = 0;
-	int currLevel = 0;
+	//Puntos que lleva el jugador
 	int currPoints = 0;
+	//Escala de los globos
 	int currScaleBallon = 1;
+	//Bool que determina si e jugador se ha quedado son flechas
 	bool outOfArrows = false;
+	//Puntero al marcador
 	ScoreBoard* SCB = nullptr;
+	//Actual frame rate de los globos para crearlos
+	double currFrameBallon = 0;
+	//Tiempo del último globo creado
+	double lastBallonCreated = 0;
+	//Puntero al fondo del nivel
+	SDLGameObject* background = nullptr;
+	//Tiempo que llevan los globos escalados
+	double scaledBallons = 0;
+	//Tiempo que los globos van a estar sobre-escalados
+	const double SCALED_BALLONS_TIME = 8500;
+	//Booleando que determina si está activo el rewards de bigBallons
+	bool scaleBallonActived = false;
+
+	//Crea el arco
 	void createBow();
+	//Crea una mariposa en una posición aleatoria
 	void createButterfly();
 public:
-	//El cambio de nivel lo debe desencadenar el metodo update
+	//Constructor por defecto
 	PlayState(GameStateMachine* _gsm, SDLApplication* _app);
-	~PlayState() { SCB = nullptr; };
+	//Constructor en función si ha guardado el juego o no
+	PlayState(GameStateMachine* _gsm, SDLApplication* _app, bool loadStatus);
+	//Se encarga de setear los valores del SCB cuando se carga el juego
+	void changeSCB(int nivel, int puntos, int flechas, int butterflie_);
+	~PlayState() { delete background; delete SCB; };
 
+	//métodos para controlar el nivel
+	void update() override;
+	//Gestiona las colisiones entre las flechas y los demás elementos
 	void checkCollision();
 
-	void createArrow(Point2D _pos);
-	void createBallon();
-	void createSCB();
-
-	bool canShoot() { return remaingShoots > 0 ? true : false; };
-	void giveArrows() { remaingShoots += 100; };//Para probar flechas
+	//Métodos para construir un nivel
+		//Agrega x mariposas al total de mariposas y las agrega a la escena
+	void addButterflies(int _butterfliesToAdd);			
+		//Carga el nivel actual
 	void loadLevel();
-	bool endGame();
+		//Determina si se ha conseguido superar el actual nivel
 	void nextLevel();
+		//Crea el scoreboard
+	void createSCB();
+		//Crea un globo en una posición aleatoria
+	void createBallon();
+	
+	void createBallon(int x_, int y_, int speed_);
+		//Cargar un nivel
+	void setLevel(int currLevel, int currPoints, int arrows, int _butterflies);
+
+	//Métodos para las flechas
+		//Crea una flecha
+	void createArrow(Point2D _pos);
+		//Determina si se puede crear una flecha
+	bool canShoot() { return remaingShoots > 0 ? true : false; };
+		//Método para agregar 100 flechas // para testeo
+	void giveArrows() { remaingShoots += 100; };
+		//Devuelve la cantidad de flechas que le quedan al arco
+	int getRemainingShots() { return remaingShoots; };
+
+	void removeButterfly() { currButterfies--; }
+	
+
+	//Métodos para destruir el nivel actual
 	void deleteAllBallons();
 	void deleteAllArrows();
 	void deleteAllRewards();
 	void deleteAllbutterflies();
-	void stackArrows(int stack);
-	int getRemainingShots() { return remaingShoots; };
 
 	//Métodos para los rewards
 	void createReward(Point2D _pos);
 	void addArrows(int _arrowsToAdd) { remaingShoots += _arrowsToAdd; };
-	void addButterflies(int _butterfliesToAdd);							
-	void setBallonScale(int _newScale) { currScaleBallon = _newScale; };
+	void setBallonScale(int _newScale);
+
+	void loadGameFromFile() {
+		//T ob = new T(forward<T>(args)...);
+		//gameObjects.push_back(ob);
+	};
+
+	void createButterfly(Vector2D pos_, Vector2D dir_);
+	void setBow(int x_, int status_);
+	void createArrow(int x_, int y_, int stacks_);
+	inline int getButterfliesLeft() { return currButterfies; };
 };

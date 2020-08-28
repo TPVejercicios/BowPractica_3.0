@@ -1,10 +1,10 @@
 #include "checkML.h"
 #include <iostream>
-using namespace std;
 #include <string>
 #include <stdexcept>
 #include "SDLApplication.h"
 
+using namespace std;
 using uint = unsigned int;
 
 int main(int argc, char* argv[]) {
