@@ -24,12 +24,18 @@ void Bow::handleEvent(const SDL_Event event) {
 		else if (event.key.keysym.sym == SDLK_RIGHT && charged) {
 			charged = false;
 			this->texture = ownerState->getApp()->getTexture(Resources::TextureId::DischargedBow);
+			//Para ajustar el tamaño y posición al cambio de textura
+			width = BOW_2_W;
+			pos.setX(GAP);
 			static_cast<PlayState*>(ownerState)->createArrow({ pos.getX(), pos.getY() + height / 2 });
 		}
 		//Tecla recarga
 		else if (event.key.keysym.sym == SDLK_LEFT && !charged && static_cast<PlayState*>(ownerState)->canShoot()) {
 			charged = true;
 			this->texture = ownerState->getApp()->getTexture(Resources::TextureId::LoadedBow);
+			//Para ajustar el tamaño y posición al cambio de textura
+			width = BOW_1_W;
+			pos.setX(0);
 		}
 		else if (event.key.keysym.sym == SDLK_p) {
 			static_cast<PlayState*>(ownerState)->giveArrows();

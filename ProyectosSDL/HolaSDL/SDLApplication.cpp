@@ -8,17 +8,20 @@
 
 //Constructor del juego
 SDLApplication::SDLApplication() {
+	//Inicialización de SDL
 	SDL_Init(SDL_INIT_EVERYTHING);
-	window = SDL_CreateWindow("BOW3.0", SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
+	//Creación del window y el renderer
+	window = SDL_CreateWindow("BOW3.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+	//Comprobación de error
 	if (window == nullptr || renderer == nullptr)
 		throw domain_error("Error al cargar SDL");
 	else
 	{
-		srand(time(NULL));
-		loadTextures();
-		gameStateMachine = new GameStateMachine(this);
+		srand(time(NULL));	//Semilla aleatoria
+		loadTextures();		//Carga de texturas
+		gameStateMachine = new GameStateMachine(this);	//Inicia la app en el esta MainMenuState
 	}
 }	
 

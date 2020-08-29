@@ -8,10 +8,13 @@
 MainMenuState::MainMenuState(GameStateMachine* _gsm, SDLApplication* _app):
 	GameState(_gsm, _app)
 {
+	//Creación del fondo
 	SDLGameObject* bg = new SDLGameObject(Vector2D(0, 0), Vector2D(0, 0), app->getWindowsH(), app->getWindowsW(), 
 		app->getTexture(Resources::TextureId::BackgroundMenu), this, -1, 0);
 	gameObjects.push_back(bg);
 	bg = nullptr;
+
+	//Creación de los botones del menú pricipal
 	createPlayButton();
 	createLoadButton();
 	createExitButton();
@@ -19,7 +22,7 @@ MainMenuState::MainMenuState(GameStateMachine* _gsm, SDLApplication* _app):
 
 void MainMenuState::createPlayButton() {
 
-	Point2D buttonPos = Vector2D(BUTTON_W, app->getWindowsH()  - BUTTON_H * 2);
+	Point2D buttonPos = Vector2D(BUTTON_W, (double)app->getWindowsH()  - (double)BUTTON_H * 2);
 	MenuButton* butonPlay = new MenuButton(buttonPos, {0,0}, BUTTON_W, BUTTON_H,
 		app->getTexture(Resources::TextureId::PlayButton), this, 0, app, CallBackPlay);
 	gameObjects.push_back(butonPlay);
@@ -28,7 +31,7 @@ void MainMenuState::createPlayButton() {
 }
 
 void MainMenuState::createLoadButton() {
-	Point2D buttonPos = Vector2D(app->getWindowsW() / 2 - (BUTTON_W / 2), app->getWindowsH() - BUTTON_H * 2);
+	Point2D buttonPos = Vector2D((double)app->getWindowsW() / 2 - (BUTTON_W / 2), (double)app->getWindowsH() - (double)BUTTON_H * 2);
 	MenuButton* butonLoad = new MenuButton(buttonPos, { 0,0 }, BUTTON_W, BUTTON_H,
 		app->getTexture(Resources::TextureId::LoadButton), this, 0, app, CallBackLoad);
 	gameObjects.push_back(butonLoad);
@@ -37,7 +40,7 @@ void MainMenuState::createLoadButton() {
 }
 
 void MainMenuState::createExitButton() {
-	Point2D buttonPos = Vector2D(app->getWindowsW() - (BUTTON_W * 2), app->getWindowsH() - BUTTON_H * 2);
+	Point2D buttonPos = Vector2D((double)app->getWindowsW() - ((double)BUTTON_W * 2), (double)app->getWindowsH() - (double)BUTTON_H * 2);
 	MenuButton* butonExit = new MenuButton(buttonPos, { 0,0 }, BUTTON_W, BUTTON_H,
 		app->getTexture(Resources::TextureId::CloseButton), this, 0, app, CallBackExit);
 	gameObjects.push_back(butonExit);

@@ -128,10 +128,11 @@ void PlayState::createButterfly() {
 
 	Point2D _pos;
 	_pos.setX(rand() % (BUTT_MAX_X - BUTT_MIN_X) + BUTT_MIN_X);
-	_pos.setY(rand() % WIN_HEIGHT - 50);
+	_pos.setY(rand() % (WIN_HEIGHT - 50));
 	Vector2D _dir;
 	_dir.setX(rand() % -2 + 1);
 	_dir.setY(rand() % -2 + 1);
+	//cout << "MARIPOSA POS: {" << _pos.getX() << ", " << _pos.getY() << "} DIR: {" << _dir.getX() << ", " << _dir.getY() << "}" << endl;
 	int id = (int)Resources::TextureId::Butterflies;
 	Butterfly* currButterfly = new Butterfly(_pos, _dir, BUTTERFLY_H, BUTTERFLY_W, app->getTexture(id),
 		this, id, BUT_SPEED);
@@ -144,7 +145,7 @@ void PlayState::update()
 {
 	GameState::update();
 	checkCollision();
-	cout << currButterfies << endl;
+	cout << "MARIPOSAS ACTUALES: " << currButterfies << endl;
 
 	if (SDL_GetTicks() - lastBallonCreated  > currFrameBallon) {
 		lastBallonCreated = SDL_GetTicks();

@@ -9,6 +9,8 @@ using namespace std;
 using Point2D = Vector2D;
 
 const uint GAP = 31;						//Desfase gráfico que hay entre el arco cargado y el descargado
+const uint BOW_1_W = 100;
+const uint BOW_2_W = 41;
 const uint PROPOR = 4;
 
 class Bow : public SDLGameObject,public EventHandler{
