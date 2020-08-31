@@ -8,7 +8,8 @@ Reward::Reward(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _bubleTex, 
 {
 	bubleTex = _bubleTex;
 	rewardsTex = reward_tex;
-	collisionable = true;
+	collisionable = false;
+	startTicks = SDL_GetTicks();
 }
 
 Reward::~Reward() {
@@ -47,6 +48,8 @@ void Reward::handleEvent(const SDL_Event event) {
 void Reward::update() {
 	pos.setY(pos.getY() + dir.getY() * MAX_SPEED_REW);
 	currCol++;
+	currRateFrame = SDL_GetTicks() - startTicks;
+	if (currRateFrame >= timeToExploit) collisionable = true;
 	if (currCol >= MAX_COLS) currCol = 0;
 	if (pos.getY() > MAX_Y_POS || currState == PICKED) {
 		dynamic_cast<GameState*>(ownerState)->killObject(this);

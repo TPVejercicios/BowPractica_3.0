@@ -25,7 +25,9 @@ GameState::~GameState() {
 }
 
 void GameState::update() {
+	//Primero borra los objetos que están en la lista de ser eliminados
 	deleteObjects();
+
 	for (auto it = gameObjects.begin(); it != gameObjects.end(); ++it) {
 		(*it)->update();
 	}

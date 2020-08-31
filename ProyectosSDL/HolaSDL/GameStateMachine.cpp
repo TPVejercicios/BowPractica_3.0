@@ -134,12 +134,13 @@ void GameStateMachine::loadGame()
 					read >> x >> y >> dirX >> dirY;
 					playState->createButterfly({ (double)x,(double)y }, { (double)dirX,(double)dirY });
 					break;
-				case (int)Resources::TextureId::DischargedBow:
-					int status;
-					read >> y >> status;
-					playState->setBow(y, status);
-					break;
+				//case (int)Resources::TextureId::DischargedBow:
+				//	int status;
+				//	read >> y >> status;
+				//	playState->setBow(y, status);
+				//	break;
 				case (int)Resources::TextureId::LoadedBow: //17
+					int status;
 					read >> y >> status;
 					playState->setBow(y, status);
 					break;

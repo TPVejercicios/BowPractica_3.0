@@ -34,6 +34,9 @@ private:
 protected:
 	int currRow = 0;
 	int currCol = 0;
+	int startTicks = 0;
+	int currRateFrame = 0;
+	const int timeToExploit = 500;
 
 public:
 	Reward(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id, int _speed, Texture* reward_tex);

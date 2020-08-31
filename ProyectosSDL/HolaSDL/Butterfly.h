@@ -4,8 +4,8 @@
 
 #pragma region CONSTANTES
 const uint MIN_X = 150;
-const uint MAX_X = 750;
-const uint MAX_Y = 500;
+const uint MAX_X = 800;
+const uint MAX_Y = 600;
 const int MAX_SPEED_BUT = 2;
 const int DEAD_DIR = 1;
 const int DEAD_SPEED = 10;

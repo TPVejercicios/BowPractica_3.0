@@ -27,9 +27,14 @@ SDLApplication::SDLApplication() {
 
 //Destrucción de todas las texturas
 SDLApplication::~SDLApplication() {
+	//Borrado de texturas
 	auto size = Resources::images_.size();
 	for (int i = 0; i < size; i++) delete textures[i];
+
+	//Borrado de la máquina de estados
 	delete gameStateMachine;
+
+	//Cerrar SDL
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();

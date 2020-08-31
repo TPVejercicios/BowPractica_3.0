@@ -28,7 +28,7 @@ const uint BUTTON_POS_Y = 400;
 const uint ARROW_H = 20;
 const uint ARROW_W = 100;
 const uint ARROW_SPEED = 50;
-const int START_SHOOTS = 10;
+const int START_SHOOTS = 0;
 
 //Constantes para la creación de globos
 const uint MIN_X_BALLON = 200;
@@ -101,10 +101,12 @@ public:
 	PlayState(GameStateMachine* _gsm, SDLApplication* _app, bool loadStatus);
 	//Se encarga de setear los valores del SCB cuando se carga el juego
 	void changeSCB(int nivel, int puntos, int flechas, int butterflie_);
+
 	~PlayState() { delete background; delete SCB; };
 
 	//métodos para controlar el nivel
 	void update() override;
+	void handleEvents() override;
 	//Gestiona las colisiones entre las flechas y los demás elementos
 	void checkCollision();
 
@@ -145,14 +147,14 @@ public:
 
 	//Métodos para los rewards
 	void createReward(Point2D _pos);
-	void addArrows(int _arrowsToAdd) { remaingShoots += _arrowsToAdd; };
+	void addArrows(int _arrowsToAdd);
 	void setBallonScale(int _newScale);
 
 	void loadGameFromFile() {
 		//T ob = new T(forward<T>(args)...);
 		//gameObjects.push_back(ob);
 	};
-
+	void noArrows() { outOfArrows = true; };
 	void createButterfly(Vector2D pos_, Vector2D dir_);
 	void setBow(int x_, int status_);
 	void createArrow(int x_, int y_, int stacks_);

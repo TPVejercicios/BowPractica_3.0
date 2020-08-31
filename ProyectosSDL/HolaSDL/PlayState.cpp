@@ -77,7 +77,7 @@ void PlayState::createArrow(Point2D _pos) {
 	gameObjects.push_back(currArrow);
 	arrows.push_back(currArrow);
 	currArrow = nullptr;
-	if (remaingShoots == 0) {
+	if (remaingShoots <= 0) {
 		outOfArrows = true;
 	}
 }
@@ -145,16 +145,20 @@ void PlayState::update()
 {
 	GameState::update();
 	checkCollision();
-	cout << "MARIPOSAS ACTUALES: " << currButterfies << endl;
+	//cout << "FLECHAS RESTANTES: " << remaingShoots << endl;
 
 	if (SDL_GetTicks() - lastBallonCreated  > currFrameBallon) {
 		lastBallonCreated = SDL_GetTicks();
 		createBallon();
 	}
-	if (arrows.empty() && remaingShoots == 0 && outOfArrows && arrows.size() <= 1) {
+	if (arrows.empty() && outOfArrows) {
 		cout << "Te has quedado sin flechas" << endl;
 		app->endState(0);
 	}
+	//if (arrows.empty() && remaingShoots <= 0 && outOfArrows && arrows.size() <= 1) {
+	//	cout << "Te has quedado sin flechas" << endl;
+	//	app->endState(0);
+	//}
 	if (scaleBallonActived && SDL_GetTicks() - scaledBallons > SCALED_BALLONS_TIME) {
 		scaledBallons = SDL_GetTicks();
 		currScaleBallon = 1;
@@ -163,6 +167,39 @@ void PlayState::update()
 	}
 	if (currButterfies <= 0) {
 		app->endState(1);
+	}
+}
+
+void PlayState::handleEvents() {
+	SDL_Event event;
+	while (SDL_PollEvent(&event)) {
+		if (event.type != SDL_QUIT) {
+			for (auto eventIT = eventObjects.begin(); eventIT != eventObjects.end(); ++eventIT) {
+				auto* aux = dynamic_cast<EventHandler*>(*eventIT);
+				(aux)->handleEvent(event);
+			}
+			if (event.key.keysym.sym == SDLK_ESCAPE)app->Exit();
+
+			//CHEATS para testeo
+			if (event.type == SDL_KEYDOWN) {
+				if (event.key.keysym.sym == SDLK_0) {
+					addArrows(5);
+					cout << "Activa truco addArrows" << endl;
+				}
+				if (event.key.keysym.sym == SDLK_1) {
+					addArrows(-2);
+					cout << "Activa truco removeArrows" << endl;
+				}
+				if (event.key.keysym.sym == SDLK_2) {
+					addButterflies(2);
+					cout << "Activa truco ReviveButterflies" << endl;
+				}
+				if (event.key.keysym.sym == SDLK_3) {
+					setBallonScale(2);
+					cout << "Activa truco bigBallons" << endl;
+				}
+			}
+		}
 	}
 }
 
@@ -268,7 +305,7 @@ void PlayState::checkCollision() {
 //Agrega un numero determinado de mariposas a la escena
 void PlayState::addButterflies(int _butterfliesToAdd) {
 	currButterfies += _butterfliesToAdd;
-	for (int i = 0; i < currButterfies; i++) {
+	for (int i = 0; i < _butterfliesToAdd; i++) {
 		createButterfly();
 	}
 }
@@ -304,6 +341,12 @@ void PlayState::createReward(Point2D _pos) {
 		eventObjects.push_back(currReward);
 		currReward = nullptr;
 	}
+}
+
+void PlayState::addArrows(int _arrowsToAdd)
+{
+	remaingShoots += _arrowsToAdd;
+	//if (remaingShoots <= 0) outOfArrows = true;
 }
 
 //Cambia la escala de los globos

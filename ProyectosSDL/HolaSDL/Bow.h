@@ -24,5 +24,5 @@ public:
 	//Escucha los eventos que conciernen al arco
 	void handleEvent(const SDL_Event event) override;
 	void saveObject(ofstream& write) override;
-	inline void changeBowStatus(int status) { status == 0 ? charged = false : charged = true; };
+	void changeBowStatus(int status);
 };

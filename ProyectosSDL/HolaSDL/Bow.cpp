@@ -11,6 +11,9 @@ void Bow::update() {
 	pos.setY(pos.getY() + dir.getY() * speed);
 	if (pos.getY() < 0) pos.setY(0);
 	if (pos.getY() > WIN_HEIGHT - height) pos.setY(WIN_HEIGHT - height);
+	if (!charged && !static_cast<PlayState*>(ownerState)->canShoot()) {
+		static_cast<PlayState*>(ownerState)->noArrows();
+	}
 }
 
 //Se encarga de la gestión de los eventos del Bow
@@ -50,5 +53,16 @@ void Bow::saveObject(ofstream& write)
 {
 	//Guardamos el id, la posición en Y y si el arco está cargado
 	write << id << " " << pos.getY() << " " << charged; //cargado 1 descargado 0
+}
+
+void Bow::changeBowStatus(int status)
+{
+	status == 0 ? charged = false : charged = true;
+	if (!charged) {
+		texture = ownerState->getApp()->getTexture(Resources::TextureId::DischargedBow);
+		//Para ajustar el tamaño y posición al cambio de textura
+		width = BOW_2_W;
+		pos.setX(GAP);
+	}
 }
 
