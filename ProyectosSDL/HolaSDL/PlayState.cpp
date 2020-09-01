@@ -291,7 +291,9 @@ void PlayState::checkCollision() {
 					break;
 					//Cambiar a toque de ratón
 				case Resources::TextureId::Rewards:
-					static_cast<Reward*>(currGO)->setState(1);
+					//state 0 es dentro de la burbuja y 1 fuera
+					if (static_cast<Reward*>(currGO)->getState() == 0) static_cast<Reward*>(currGO)->setState(1);
+					//static_cast<Reward*>(currGO)->setState(1);
 				default:
 					break;
 				}
@@ -405,4 +407,5 @@ void PlayState::createSCB() {
 	{
 		throw domain_error("El scoreBoard no se ha podido crear");
 	}
+	scoreBoard = nullptr;
 }

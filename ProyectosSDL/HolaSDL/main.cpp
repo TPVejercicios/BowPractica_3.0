@@ -16,5 +16,6 @@ int main(int argc, char* argv[]) {
 	catch (exception e) {
 		cout << e.what() << endl;
 	}
+	system("pause");
 	return 0;
 }

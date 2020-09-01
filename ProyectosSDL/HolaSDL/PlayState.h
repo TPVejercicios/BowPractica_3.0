@@ -53,8 +53,8 @@ const int BONUS_POINTS = 2;
 const int POINTS_TO_SUB = 15;
 
 //Constantes para rewards 
-const uint REWARD_H = 50;
-const uint REWARD_W = 50;
+const uint REWARD_H = 90;
+const uint REWARD_W = 90;
 const uint REWARD_SPEED = 1;
 const int MAX_REWARDS = 4;
 

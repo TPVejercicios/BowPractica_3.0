@@ -21,6 +21,8 @@ ScoreBoard::~ScoreBoard() {
 	scoreTexture = nullptr;
 	arrowTexture = nullptr;
 	game = nullptr;
+	cout << "Scoreboard destroy" << endl;
+	system("pause");
 }
 
 void ScoreBoard::renderPoint()const {

@@ -2,6 +2,7 @@
 #include "GameState.h"
 #include "Texture.h"
 #include "PlayState.h"
+#include <iostream>
 
 Reward::Reward(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _bubleTex, GameState* _owner, int _id, int _speed, Texture* reward_tex)
 	:SDLGameObject(_pos, _dir, _h, _w, _bubleTex, _owner, _id, _speed)
@@ -18,28 +19,21 @@ Reward::~Reward() {
 }
 
 void Reward::handleEvent(const SDL_Event event) {
-	if (currState == OUTSIDE && event.type == SDL_MOUSEBUTTONDOWN /*&& event.button.button == SDL_BUTTON_LEFT*/) {
+	if (currState == OUTSIDE && event.type == SDL_MOUSEBUTTONDOWN) {
+		//Posicion del click
 		SDL_Point p = { event.button.x, event.button.y };
+		//Rectángulo del reward
 		SDL_Rect* r = new SDL_Rect();
-		if (currState == INSIDE) {
-			r->x = this->pos.getX();
-			r->y = this->pos.getY();
-			r->h = BUBBLE_Y_SIZE;
-			r->w = BUBBLE_X_SIZE;
-		}
-		else if (currState == OUTSIDE) {
-			r->x = REWARD_GAP_X + this->pos.getX();
-			r->y = REWARD_GAP_Y + this->pos.getY();
-			r->h = this->height;
-			r->w = this->width;
-		}
+		r->x = REWARD_GAP_X + this->pos.getX();
+		r->y = REWARD_GAP_Y + this->pos.getY();
+		r->h = this->height;
+		r->w = this->width;
+		//Comprueba el click en la recompensa
 		if (SDL_PointInRect(&p, r) == SDL_TRUE) {
-			if (currState == INSIDE) currState = OUTSIDE;
-			else if (currState == OUTSIDE) {
-				action();
-				currState = PICKED;
-			}
+			action();
+			currState = PICKED;
 		}
+		//Aseguramos no dejar memoria ocupada
 		delete r;
 		r = nullptr;
 	}
@@ -49,7 +43,7 @@ void Reward::update() {
 	pos.setY(pos.getY() + dir.getY() * MAX_SPEED_REW);
 	currCol++;
 	currRateFrame = SDL_GetTicks() - startTicks;
-	if (currRateFrame >= timeToExploit) collisionable = true;
+	if (currRateFrame >= TIME_TO_EXPLOIT) collisionable = true;
 	if (currCol >= MAX_COLS) currCol = 0;
 	if (pos.getY() > MAX_Y_POS || currState == PICKED) {
 		dynamic_cast<GameState*>(ownerState)->killObject(this);
@@ -57,25 +51,11 @@ void Reward::update() {
 }
 
 void Reward::render() {
-	rewardsTex->renderFrame(SDL_Rect({ (int)pos.getX() + REWARD_GAP_X,(int)pos.getY() + REWARD_GAP_Y,(int)width,(int)height }), currRow, currCol, 0, SDL_FLIP_NONE);
+	//Reward
+	rewardsTex->renderFrame(SDL_Rect({ (int)pos.getX() + REWARD_GAP_X, (int)pos.getY() + REWARD_GAP_Y, REWARD_X_SIZE, REWARD_Y_SIZE }), currRow, currCol, 0, SDL_FLIP_NONE);
+	//Bubble
 	if (currState == INSIDE) {
 		bubleTex->render(SDL_Rect({ (int)pos.getX(),(int)pos.getY(),BUBBLE_Y_SIZE,BUBBLE_X_SIZE }), SDL_FLIP_NONE);
-	}
-}
-
-void Reward::setState(int state) {
-	switch (state) {
-	case INSIDE:
-		currState = INSIDE;
-		break;
-	case OUTSIDE:
-		currState = OUTSIDE;
-		break;
-	case PICKED:
-		currState = PICKED;
-		break;
-	default:
-		break;
 	}
 }
 

@@ -51,5 +51,6 @@ public:
 	void setBallonFrame(int frame) { currFrameBallon = frame; };
 	uint getWindowsW() { return WIN_WIDTH; }
 	uint getWindowsH() { return WIN_HEIGHT; }
+	SDL_Renderer* getRenderer() { return renderer; };
 };
 
