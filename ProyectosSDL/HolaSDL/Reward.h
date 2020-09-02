@@ -28,13 +28,14 @@ enum state_reward
 {
 	INSIDE = 0, OUTSIDE = 1, PICKED = 2
 };
+
 class Reward : public SDLGameObject, public EventHandler
 {
 private:
-	state_reward currState = INSIDE;
 	Texture* bubleTex = nullptr;
 	Texture* rewardsTex = nullptr;
 protected:
+	state_reward currState = INSIDE;
 	int currRow = 0;
 	int currCol = 0;
 	int startTicks = 0;
@@ -42,10 +43,13 @@ protected:
 
 public:
 	Reward(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id, int _speed, Texture* reward_tex);
+	Reward(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id, int _speed, Texture* reward_tex, int _state);	//Constructor con estado
 	~Reward();
 	virtual void render() ;
 	virtual void update();
-	//virtual void saveToFile(string& data);
+	virtual void saveObject(ofstream& write) override {
+		write << id << " " << currRow << " " << (int)currState << " " << pos.getX() << " " << pos.getY();
+	};
 	virtual void handleEvent(const SDL_Event event);
 	virtual void action() = 0;
 
@@ -60,6 +64,11 @@ public:
 		: Reward(_pos, _dir, _h, _w, _texture, _owner, _id, _speed, reward_tex) {
 		currRow = 0;
 	};
+	//Contructor con estado
+	AddArrows(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id, int _speed, Texture* reward_tex, int _state)
+		: Reward(_pos, _dir, _h, _w, _texture, _owner, _id, _speed, reward_tex, _state) {
+		currRow = 0;
+	};
 	virtual void action();
 };
 
@@ -68,6 +77,11 @@ class RemoveArrows : public Reward
 public:
 	RemoveArrows(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id, int _speed, Texture* reward_tex)
 		: Reward(_pos, _dir, _h, _w, _texture, _owner, _id, _speed, reward_tex) {
+		currRow = 1;
+	};
+	//Contructor con estado
+	RemoveArrows(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id, int _speed, Texture* reward_tex, int _state)
+		: Reward(_pos, _dir, _h, _w, _texture, _owner, _id, _speed, reward_tex, _state) {
 		currRow = 1;
 	};
 	virtual void action();
@@ -80,6 +94,11 @@ public:
 		: Reward(_pos, _dir, _h, _w, _texture, _owner, _id, _speed, reward_tex) {
 		currRow = 2;
 	};
+	//Contructor con estado
+	ReviveButterflies(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id, int _speed, Texture* reward_tex, int _state)
+		: Reward(_pos, _dir, _h, _w, _texture, _owner, _id, _speed, reward_tex, _state) {
+		currRow = 2;
+	};
 	virtual void action();
 };
 
@@ -88,6 +107,11 @@ class BigBallons : public Reward
 public:
 	BigBallons(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id, int _speed, Texture* reward_tex)
 		: Reward(_pos, _dir, _h, _w, _texture, _owner, _id, _speed, reward_tex) {
+		currRow = 3;
+	};
+	//Contructor con estado
+	BigBallons(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _texture, GameState* _owner, int _id, int _speed, Texture* reward_tex, int _state)
+		: Reward(_pos, _dir, _h, _w, _texture, _owner, _id, _speed, reward_tex, _state) {
 		currRow = 3;
 	};
 	virtual void action();

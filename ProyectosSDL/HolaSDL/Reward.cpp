@@ -13,6 +13,16 @@ Reward::Reward(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _bubleTex, 
 	startTicks = SDL_GetTicks();
 }
 
+Reward::Reward(Point2D _pos, Vector2D _dir, int _h, int _w, Texture* _bubleTex, GameState* _owner, int _id, int _speed, Texture* reward_tex, int _state)
+	:SDLGameObject(_pos, _dir, _h, _w, _bubleTex, _owner, _id, _speed)
+{
+	bubleTex = _bubleTex;
+	rewardsTex = reward_tex;
+	collisionable = false;
+	startTicks = SDL_GetTicks();
+	currState = (state_reward)_state;
+}
+
 Reward::~Reward() {
 	bubleTex = nullptr;
 	rewardsTex = nullptr;

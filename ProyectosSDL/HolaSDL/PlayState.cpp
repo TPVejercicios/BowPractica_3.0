@@ -345,6 +345,37 @@ void PlayState::createReward(Point2D _pos) {
 	}
 }
 
+void PlayState::createKnowReward(Point2D _pos, int _kind, int _state)
+{
+	Reward* currReward = nullptr;
+	switch (_kind)
+	{
+	case 0:
+		currReward = new AddArrows(_pos, { 0,1 }, REWARD_H, REWARD_W, app->getTexture(Resources::TextureId::Bubble),
+			this, Resources::TextureId::Rewards, REWARD_SPEED, app->getTexture(Resources::TextureId::Rewards), _state);
+		break;
+	case 1:
+		currReward = new RemoveArrows(_pos, { 0,1 }, REWARD_H, REWARD_W, app->getTexture(Resources::TextureId::Bubble),
+			this, Resources::TextureId::Rewards, REWARD_SPEED, app->getTexture(Resources::TextureId::Rewards), _state);
+		break;
+	case 2:
+		currReward = new ReviveButterflies(_pos, { 0,1 }, REWARD_H, REWARD_W, app->getTexture(Resources::TextureId::Bubble),
+			this, Resources::TextureId::Rewards, REWARD_SPEED, app->getTexture(Resources::TextureId::Rewards), _state);
+		break;
+	case 3:
+		currReward = new BigBallons(_pos, { 0,1 }, REWARD_H, REWARD_W, app->getTexture(Resources::TextureId::Bubble),
+			this, Resources::TextureId::Rewards, REWARD_SPEED, app->getTexture(Resources::TextureId::Rewards), _state);
+		break;
+	default:
+		break;
+	}
+	if (currReward != nullptr) {
+		gameObjects.push_back(currReward);
+		eventObjects.push_back(currReward);
+		currReward = nullptr;
+	}
+}
+
 void PlayState::addArrows(int _arrowsToAdd)
 {
 	remaingShoots += _arrowsToAdd;

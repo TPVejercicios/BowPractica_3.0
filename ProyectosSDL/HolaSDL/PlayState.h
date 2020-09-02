@@ -145,8 +145,10 @@ public:
 	void deleteAllRewards();
 	void deleteAllbutterflies();
 
-	//Métodos para los rewards
+	//Métodos para los rewards 
 	void createReward(Point2D _pos);
+	//Carga una recompensa
+	void createKnowReward(Point2D _pos, int _kind, int _state);
 	void addArrows(int _arrowsToAdd);
 	void setBallonScale(int _newScale);
 
