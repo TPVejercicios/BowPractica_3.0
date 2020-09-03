@@ -3,15 +3,10 @@
 
 using namespace std;
 
- Texture::~Texture() {
-	 try {
-		 SDL_DestroyTexture(texture);
-		 texture = nullptr;
-		 w = h = 0;
-	 }
-	 catch (exception e) {
-		 cout << "Error deleting texture " << e.what() << endl;
-	 }
+Texture::~Texture() {
+	SDL_DestroyTexture(texture);
+	texture = nullptr;
+	w = h = 0;
 }
 
 

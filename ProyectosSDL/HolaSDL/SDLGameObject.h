@@ -33,7 +33,7 @@ protected:
 public:
 	SDLGameObject(Point2D _pos, Vector2D _dir , int _height, int _width, Texture* _texture, GameState* _owner, int _id, int speed);
 	SDLGameObject() {};	//Para el scb
-	~SDLGameObject();
+	~SDLGameObject() override;
 
 	virtual void update();
 	virtual void render();

@@ -51,7 +51,6 @@ void GameStateMachine::loadMenuState(){
 		statesToErase += 2;
 	}
 	else {
-		cout << typeid(&(states.top())).name() << endl;
 		throw domain_error("No se ha podido cargar el estado MenuState");
 	}
 }
@@ -146,7 +145,6 @@ void GameStateMachine::loadGame()
 					playState->createArrow(x, y, stacks);
 					break;
 				case (int)Resources::TextureId::Rewards:
-					cout << "LEIDA UNA REWARD" << endl;
 					//id, kind, state, posx, posy
 					int kind, state;
 					double xr, yr;

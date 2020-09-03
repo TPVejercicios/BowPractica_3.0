@@ -155,10 +155,6 @@ void PlayState::update()
 		cout << "Te has quedado sin flechas" << endl;
 		app->endState(0);
 	}
-	//if (arrows.empty() && remaingShoots <= 0 && outOfArrows && arrows.size() <= 1) {
-	//	cout << "Te has quedado sin flechas" << endl;
-	//	app->endState(0);
-	//}
 	if (scaleBallonActived && SDL_GetTicks() - scaledBallons > SCALED_BALLONS_TIME) {
 		scaledBallons = SDL_GetTicks();
 		currScaleBallon = 1;
@@ -289,11 +285,9 @@ void PlayState::checkCollision() {
 					if (currPoints - POINTS_TO_SUB < 0) currPoints = 0;			//Nunca se obtiene una puntuación negativa
 					else currPoints -= POINTS_TO_SUB;
 					break;
-					//Cambiar a toque de ratón
 				case Resources::TextureId::Rewards:
 					//state 0 es dentro de la burbuja y 1 fuera
 					if (static_cast<Reward*>(currGO)->getState() == 0) static_cast<Reward*>(currGO)->setState(1);
-					//static_cast<Reward*>(currGO)->setState(1);
 				default:
 					break;
 				}
@@ -315,7 +309,6 @@ void PlayState::addButterflies(int _butterfliesToAdd) {
 //Crea un premio en una posición dada
 void PlayState::createReward(Point2D _pos) {
 	int rnd = rand() % MAX_REWARDS;
-	cout << rnd << endl;
 	Reward* currReward = nullptr;
 	switch (rnd)
 	{
